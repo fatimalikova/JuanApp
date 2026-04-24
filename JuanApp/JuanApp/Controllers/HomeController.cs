@@ -14,6 +14,9 @@ namespace JuanApp.Controllers
             HomeVm homeVm = new HomeVm
             {
                 Sliders = _context.Sliders.ToList(),
+                Products = _context.Products
+                .Include(p => p.ProductImages)
+                .ToList(),
                 NewProducts = _context.Products
                 .Include(p => p.ProductImages)
                 .Where(p => p.IsNew).ToList(),

@@ -1,0 +1,26 @@
+﻿using JuanApp.Data;
+using JuanApp.ViewModels;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace JuanApp.Controllers
+{
+    public class ProductsController(JuanDbContext _context) : Controller
+    {
+        public IActionResult Detail(Guid id)
+        {
+            var product = _context.Products
+                .Include(p => p.ProductImages)
+                .FirstOrDefault(p => p.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            ProductVm productVm = new()
+            {
+                
+            };
+            return View(productVm);
+        }
+    }
+}
