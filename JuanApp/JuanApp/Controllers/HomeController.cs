@@ -1,25 +1,28 @@
+using JuanApp.Data;
 using JuanApp.Models;
+using JuanApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace JuanApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(JuanDbContext _context) : Controller
     {
         public IActionResult Index()
         {
-            return View();
+            HomeVm homeVm = new HomeVm
+            {
+                Sliders = _context.Sliders.ToList(),
+                NewProducts = _context.Products
+                .Include(p => p.ProductImages)
+                .Where(p => p.IsNew).ToList(),
+
+                Blogs = _context.Blogs.ToList()
+            };
+            return View(homeVm);
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+     
     }
 }
