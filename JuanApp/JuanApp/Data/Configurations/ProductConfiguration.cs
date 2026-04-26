@@ -18,8 +18,6 @@ namespace JuanApp.Data.Configurations
             builder.Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(255);
-            builder.Property(p => p.Description)
-                .HasMaxLength(300);
             builder.Property(p => p.InStock)
                 .IsRequired();
 

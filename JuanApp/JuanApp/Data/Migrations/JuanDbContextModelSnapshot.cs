@@ -48,6 +48,21 @@ namespace JuanApp.Data.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("JuanApp.Models.Color", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Colors");
+                });
+
             modelBuilder.Entity("JuanApp.Models.Product", b =>
                 {
                     b.Property<Guid>("Id")
@@ -56,8 +71,7 @@ namespace JuanApp.Data.Migrations
                         .HasDefaultValueSql("NEWID()");
 
                     b.Property<string>("Description")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("DiscountPercentage")
                         .HasColumnType("int");
@@ -84,6 +98,24 @@ namespace JuanApp.Data.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("JuanApp.Models.ProductColor", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("ColorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProductId", "ColorId");
+
+                    b.HasIndex("ColorId");
+
+                    b.ToTable("ProductColors");
+                });
+
             modelBuilder.Entity("JuanApp.Models.ProductImage", b =>
                 {
                     b.Property<Guid>("Id")
@@ -101,6 +133,24 @@ namespace JuanApp.Data.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("JuanApp.Models.ProductSize", b =>
+                {
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SizeId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ProductId", "SizeId");
+
+                    b.HasIndex("SizeId");
+
+                    b.ToTable("ProductSizes");
                 });
 
             modelBuilder.Entity("JuanApp.Models.Service", b =>
@@ -136,6 +186,21 @@ namespace JuanApp.Data.Migrations
                     b.ToTable("Settings");
                 });
 
+            modelBuilder.Entity("JuanApp.Models.Size", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Sizes");
+                });
+
             modelBuilder.Entity("JuanApp.Models.Slider", b =>
                 {
                     b.Property<Guid>("Id")
@@ -165,6 +230,25 @@ namespace JuanApp.Data.Migrations
                     b.ToTable("Sliders");
                 });
 
+            modelBuilder.Entity("JuanApp.Models.ProductColor", b =>
+                {
+                    b.HasOne("JuanApp.Models.Color", "Color")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JuanApp.Models.Product", "Product")
+                        .WithMany("ProductColors")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Color");
+
+                    b.Navigation("Product");
+                });
+
             modelBuilder.Entity("JuanApp.Models.ProductImage", b =>
                 {
                     b.HasOne("JuanApp.Models.Product", "Product")
@@ -176,9 +260,42 @@ namespace JuanApp.Data.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("JuanApp.Models.ProductSize", b =>
+                {
+                    b.HasOne("JuanApp.Models.Product", "Product")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JuanApp.Models.Size", "Size")
+                        .WithMany("ProductSizes")
+                        .HasForeignKey("SizeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("JuanApp.Models.Color", b =>
+                {
+                    b.Navigation("ProductColors");
+                });
+
             modelBuilder.Entity("JuanApp.Models.Product", b =>
                 {
+                    b.Navigation("ProductColors");
+
                     b.Navigation("ProductImages");
+
+                    b.Navigation("ProductSizes");
+                });
+
+            modelBuilder.Entity("JuanApp.Models.Size", b =>
+                {
+                    b.Navigation("ProductSizes");
                 });
 #pragma warning restore 612, 618
         }

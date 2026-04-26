@@ -8,7 +8,9 @@ namespace JuanApp.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<ProductImage> builder)
         {
-            builder.Property(x => x.ImageUrl).IsRequired(false);
+            builder.Property(pi => pi.ImageUrl)
+                .IsRequired(false);
+
         }
     }
 }

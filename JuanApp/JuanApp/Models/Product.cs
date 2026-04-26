@@ -14,6 +14,8 @@ namespace JuanApp.Models
         public string MainImageUrl { get; set; }
         public bool InStock { get; set; }
         public List<ProductImage> ProductImages { get; set; }
+        public List<ProductColor> ProductColors { get; set; }
+        public List<ProductSize> ProductSizes { get; set; }
         public bool IsNew { get; set; }
 
     }

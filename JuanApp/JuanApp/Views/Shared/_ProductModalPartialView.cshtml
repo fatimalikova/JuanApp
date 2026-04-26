@@ -61,7 +61,14 @@
                         </div>
                         <div class="availability mb-20">
                             <h5 class="cat-title">Availability:</h5>
-                            <span>In Stock</span>
+                            <span>@if (Model.InStock == true)
+                            {
+                                <span>In Stock</span>
+                            }
+                            else
+                            {
+                                <span style="color: red;">Out of Stock</span>
+                            }</span>
                         </div>
                         <div class="share-icon">
                             <h5 class="cat-title">Share:</h5>

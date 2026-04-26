@@ -86,7 +86,7 @@
                             </div>
                             <div class="product-content">
                                 <h5 class="product-name">
-                                    <a asp-action="ProductDetails" asp-controller="Products" asp-route-id="@product.Id">@product.Name</a>
+                                    <a asp-action="Detail" asp-controller="Products" asp-route-id="@product.Id">@product.Name</a>
                                 </h5>
                                 <div class="price-box">
                                     <span class="price-regular">$@(product.Price - ((product.Price * product.DiscountPercentage) / 100))</span>
@@ -207,11 +207,11 @@
                                         <a href="#" data-toggle="tooltip" title="Add To Cart">
                                             <i class="ion-bag"></i>
                                         </a>
-                                        <a asp-action="ProductModal" 
-                                           asp-controller="Products" 
+                                        <a asp-action="ProductModal"
+                                           asp-controller="Products"
                                            asp-route-id="@item.Id"
-                                           class="quickViewIcon" 
-                                           data-toggle="tooltip" 
+                                           class="quickViewIcon"
+                                           data-toggle="tooltip"
                                            title="Quick View">
                                             <i class="ion-ios-eye-outline"></i>
                                         </a>
