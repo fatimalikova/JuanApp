@@ -1,0 +1,121 @@
+﻿@model JuanApp.Models.Product
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+            &times;
+        </button>
+    </div>
+    <div class="modal-body">
+        <!-- product details inner start -->
+        <div class="product-details-inner">
+            <div class="row">
+                <div class="col-lg-5">
+                    <div class="product-large-slider mb-20">
+                        @if (Model.ProductImages != null && Model.ProductImages.Any())
+                        {
+                            @foreach (var image in Model.ProductImages)
+                            {
+                                <div class="pro-large-img img-zoom">
+                                    <img src="~/assets/img/product/@image.ImageUrl"
+                                         alt="product image" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="pro-large-img img-zoom">
+                                <img src="~/assets/img/product/@Model.MainImageUrl"
+                                     alt="product image" />
+                            </div>
+                        }
+                    </div>
+                    <div class="pro-nav">
+                        @if (Model.ProductImages != null && Model.ProductImages.Any())
+                        {
+                            @foreach (var image in Model.ProductImages)
+                            {
+                                <div class="pro-nav-thumb">
+                                    <img src="~/assets/img/product/@image.ImageUrl"
+                                         alt="product thumb" />
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="pro-nav-thumb">
+                                <img src="~/assets/img/product/@Model.MainImageUrl"
+                                     alt="product thumb" />
+                            </div>
+                        }
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="product-details-content">
+                        <h2>@Model.Name</h2>
+                        <div class="product-details-meta">
+                            <div class="pro-details-rating">
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star"></i>
+                                <i class="ion-android-star-half"></i>
+                                <span class="rating-count"> (1 review)</span>
+                            </div>
+                            <div class="pro-details-price-box">
+                                <span class="pro-details-price">$@(Model.Price - ((Model.Price * Model.DiscountPercentage) / 100))</span>
+                                <span class="pro-details-price-old"><del>$@Model.Price</del></span>
+                            </div>
+                        </div>
+                        <div class="pro-details-description">
+                            <p>@Model.Description</p>
+                        </div>
+                        <div class="pro-details-size-color">
+                            <div class="pro-details-size">
+                                <label>size</label>
+                                <select class="pro-details-opt-select">
+                                    <option>Select Size</option>
+                                    <option>S</option>
+                                    <option>M</option>
+                                    <option>L</option>
+                                    <option>XL</option>
+                                </select>
+                            </div>
+                            <div class="pro-details-color">
+                                <label>Color</label>
+                                <select class="pro-details-opt-select">
+                                    <option>Select Color</option>
+                                    <option>Black</option>
+                                    <option>White</option>
+                                    <option>Red</option>
+                                    <option>Blue</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="pro-details-action">
+                            <div class="pro-details-quantity">
+                                <label>quantity</label>
+                                <input class="pro-details-quality-btn" type="number" min="1" value="1" />
+                            </div>
+                            <button class="btn btn-cart">Add To Cart</button>
+                            <a href="#"><i class="ion-android-favorite-outline"></i></a>
+                        </div>
+                        <div class="pro-details-sku">
+                            <span><strong>SKU :</strong> @Model.Id.ToString().Substring(0, 8)</span>
+                            <div class="pro-details-social">
+                                <label>Share :</label>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- product details inner end -->
+    </div>
+</div>

@@ -1,4 +1,5 @@
 using JuanApp.Data;
+using JuanApp.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,14 @@ builder.Services.AddControllersWithViews();
 var config = builder.Configuration;
 builder.Services.AddDbContext<JuanDbContext>(options =>
     options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<LayoutService>();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromSeconds(30);
+    //options.Cookie.HttpOnly = true;
+    //options.Cookie.IsEssential = true;
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

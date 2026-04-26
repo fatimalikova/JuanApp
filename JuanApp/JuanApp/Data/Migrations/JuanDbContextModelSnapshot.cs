@@ -103,6 +103,26 @@ namespace JuanApp.Data.Migrations
                     b.ToTable("ProductImages");
                 });
 
+            modelBuilder.Entity("JuanApp.Models.Service", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Tittle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Services");
+                });
+
             modelBuilder.Entity("JuanApp.Models.Setting", b =>
                 {
                     b.Property<string>("Key")

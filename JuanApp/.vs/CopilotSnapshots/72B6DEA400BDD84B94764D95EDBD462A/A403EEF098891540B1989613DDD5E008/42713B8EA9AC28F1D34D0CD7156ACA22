@@ -1,0 +1,125 @@
+﻿$(document).ready(function () {
+    function initializeProductSlider() {
+        // Initialize main product image slider - matching active.js configuration
+        if ($('.product-large-slider').length && !$('.product-large-slider').hasClass('slick-initialized')) {
+            $('.product-large-slider').slick({
+                fade: true,
+                arrows: false,
+                asNavFor: '.pro-nav'
+            });
+        }
+
+        // Initialize product thumbnail slider - matching active.js configuration
+        if ($('.pro-nav').length && !$('.pro-nav').hasClass('slick-initialized')) {
+            $('.pro-nav').slick({
+                slidesToShow: 4,
+                asNavFor: '.product-large-slider',
+                arrows: false,
+                focusOnSelect: true
+            });
+        }
+
+        // Initialize image zoom effect
+        if ($('.img-zoom').length) {
+            $('.img-zoom').zoom();
+        }
+    }
+
+    // Modal functionality
+    function openModal(modalId) {
+        $(`#${modalId}`).fadeIn();
+        $("body").css("overflow", "hidden");
+    }
+
+    function closeModal(modalId) {
+        $(`#${modalId}`).fadeOut();
+        $("body").css("overflow", "auto");
+    }
+
+    // Close modal when clicking the X button
+    $(document).on("click", ".modal-close", function () {
+        const modal = $(this).closest(".modal");
+        closeModal(modal.attr("id"));
+    });
+
+    // Close modal when clicking outside the modal content
+    $(window).click(function (event) {
+        if ($(event.target).hasClass("modal")) {
+            closeModal($(event.target).attr("id"));
+        }
+    });
+
+    // Quick view icon click handler
+    $(document).on("click", ".quickViewIcon", function (e) {
+        e.preventDefault();
+        const productId = $(this).data("product-id");
+        const url = `/products/productmodal/${productId}`;
+
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "html",
+            success: function (data) {
+                // Destroy existing sliders if they exist
+                if ($('.product-large-slider').hasClass('slick-initialized')) {
+                    $('.product-large-slider').slick('unslick');
+                }
+                if ($('.pro-nav').hasClass('slick-initialized')) {
+                    $('.pro-nav').slick('unslick');
+                }
+
+                // Insert new content
+                $("#productModal .modal-body").html(data);
+
+                // Initialize new sliders
+                initializeProductSlider();
+
+                // Show modal
+                openModal("productModal");
+            },
+            error: function () {
+                alert("Error loading product details. Please try again.");
+            }
+        });
+    });
+
+    // Prevent modal from closing when clicking inside modal content
+    $(document).on("click", ".modal-content", function (event) {
+        event.stopPropagation();
+    });
+});
+
+    $(document).on("click", ".quick-view-btn", function (e) {
+        e.preventDefault();
+        let productId = $(this).data("id");
+        let url = "/Product/ProductModal?id=" + productId;
+        fetch(url)
+            .then((response) => response.text())
+            .then((data) => {
+                // Destroy existing sliders if they exist
+                if ($('.product-large-slider').hasClass('slick-initialized')) {
+                    $('.product-large-slider').slick('unslick');
+                }
+                if ($('.pro-nav').hasClass('slick-initialized')) {
+                    $('.pro-nav').slick('unslick');
+                }
+
+                // Insert new content
+                $("#quick_view .modal-dialog").html(data);
+
+                // Initialize new sliders
+                initializeProductSlider();
+
+                // Show modal
+                $("#quick_view").modal('show');
+            })
+            .catch((error) => console.error('Error:', error));
+    });
+
+    // Reinitialize sliders when modal is shown (Bootstrap event)
+    $(document).on('show.bs.modal', '#quick_view', function (e) {
+        setTimeout(function () {
+            initializeProductSlider();
+        }, 100);
+    });
+});

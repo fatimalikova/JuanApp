@@ -1,0 +1,8 @@
+﻿$(document).ready(function () {
+    $(".quickViewIcon").click(function () {
+        //url: /products/productmodal/ID
+        
+       
+    })
+
+});

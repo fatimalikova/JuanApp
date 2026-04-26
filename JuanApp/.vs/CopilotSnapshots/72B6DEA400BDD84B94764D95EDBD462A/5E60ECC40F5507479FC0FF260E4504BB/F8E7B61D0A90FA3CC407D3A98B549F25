@@ -1,0 +1,49 @@
+﻿$(document).ready(function () {
+    // Modal functionality
+    function openModal(modalId) {
+        $(`#${modalId}`).fadeIn();
+        $("body").css("overflow", "hidden");
+    }
+
+    function closeModal(modalId) {
+        $(`#${modalId}`).fadeOut();
+        $("body").css("overflow", "auto");
+    }
+
+    // Close modal when clicking the X button
+    $(".modal-close, .modal-header .close").click(function () {
+        const modal = $(this).closest(".modal");
+        closeModal(modal.attr("id"));
+    });
+
+    // Close modal when clicking outside the modal content
+    $(window).click(function (event) {
+        if ($(event.target).hasClass("modal")) {
+            closeModal($(event.target).attr("id"));
+        }
+    });
+
+    // Quick view icon click handler
+    $(".quickViewIcon").click(function () {
+        const productId = $(this).data("product-id");
+        const url = `/products/productmodal/${productId}`;
+
+        $.ajax({
+            url: url,
+            type: "GET",
+            dataType: "html",
+            success: function (data) {
+                $("#productModal").html(data);
+                openModal("productModal");
+            },
+            error: function () {
+                alert("Error loading product details");
+            }
+        });
+    });
+
+    // Prevent modal from closing when clicking inside modal content
+    $(".modal-content").click(function (event) {
+        event.stopPropagation();
+    });
+});

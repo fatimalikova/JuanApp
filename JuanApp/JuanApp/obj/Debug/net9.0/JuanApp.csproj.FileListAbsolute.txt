@@ -173,3 +173,4 @@ C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\xfppe8gz79-{0}-lh81rvvjz5-lh81rvvjz5.gz
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\swae.build.ex.cache
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\8lv86l1kyj-{0}-3bodrhlvj6-3bodrhlvj6.gz

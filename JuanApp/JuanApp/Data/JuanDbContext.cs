@@ -18,5 +18,6 @@ namespace JuanApp.Data
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<Service> Services { get; set; }
     }
 }

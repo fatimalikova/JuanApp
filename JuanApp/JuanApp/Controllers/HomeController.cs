@@ -21,7 +21,8 @@ namespace JuanApp.Controllers
                 .Include(p => p.ProductImages)
                 .Where(p => p.IsNew).ToList(),
 
-                Blogs = _context.Blogs.ToList()
+                Blogs = _context.Blogs.ToList(),
+                Services = _context.Services.ToList()
             };
             return View(homeVm);
         }

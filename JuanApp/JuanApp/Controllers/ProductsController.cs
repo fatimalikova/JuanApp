@@ -40,16 +40,19 @@ namespace JuanApp.Controllers
             return View(productVm);
         }
 
-        //public IActionResult ProductModal(Guid id)
-        //{
-        //    var product = _context.Products
-        //        .Include(p => p.ProductImages)
-        //        .FirstOrDefault(p => p.Id == id);
+        public IActionResult ProductModal(Guid id)
+        {
+            var product = _context.Products
+                .Include(p => p.ProductImages)
+                .FirstOrDefault(p => p.Id == id);
 
-        //    if (product == null)
-        //        return NotFound();
+            if (product == null)
+                return NotFound();
 
-        //    return PartialView("_ProductModalPartialView", product);
-        //}
+            return PartialView("_ProductModalPartialView", product);
+
+
+
+        }
     }
 }
