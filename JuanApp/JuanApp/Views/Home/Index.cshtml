@@ -247,21 +247,21 @@
                     {
                         <div class="blog-post-item">
                             <div class="blog-thumb">
-                                <a href="blog-details.html">
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">
                                     <img src="~/assets/img/blog/@blog.MainImageUrl" alt="blog thumb" />
                                 </a>
                             </div>
                             <div class="blog-content">
                                 <h5 class="blog-title">
-                                    <a href="blog-details.html">
+                                    <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id">
                                         @blog.Title
                                     </a>
                                 </h5>
                                 <ul class="blog-meta">
                                     <li><span>By: </span>@blog.Author, </li>
-                                    <li><span>On: </span>@blog.PublishedDate</li>
+                                    <li><span>On: </span>@blog.PublishedDate.ToString("MM/dd/yyyy")</li>
                                 </ul>
-                                <a href="blog-details.html" class="read-more">Read More...</a>
+                                <a asp-controller="Blog" asp-action="Detail" asp-route-id="@blog.Id" class="read-more">Read More...</a>
                             </div>
                         </div>
                     }
