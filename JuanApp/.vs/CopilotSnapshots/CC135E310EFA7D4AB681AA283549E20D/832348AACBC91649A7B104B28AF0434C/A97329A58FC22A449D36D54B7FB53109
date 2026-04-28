@@ -1,0 +1,13 @@
+﻿using Microsoft.AspNetCore.Mvc;
+
+namespace JuanApp.Areas.Manage.Controllers
+{
+    public class SliderController : Controller
+    {
+        [Area("Manage")]
+        public IActionResult Index()
+        {
+            return View();
+        }
+    }
+}

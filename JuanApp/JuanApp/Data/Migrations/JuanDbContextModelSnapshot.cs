@@ -48,6 +48,27 @@ namespace JuanApp.Data.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("JuanApp.Models.BlogRelation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("BlogId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("RelatedBlogId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogId");
+
+                    b.HasIndex("RelatedBlogId");
+
+                    b.ToTable("BlogRelations", (string)null);
+                });
+
             modelBuilder.Entity("JuanApp.Models.Color", b =>
                 {
                     b.Property<Guid>("Id")
@@ -230,6 +251,26 @@ namespace JuanApp.Data.Migrations
                     b.ToTable("Sliders");
                 });
 
+            modelBuilder.Entity("JuanApp.Models.BlogRelation", b =>
+                {
+                    b.HasOne("JuanApp.Models.Blog", "Blog")
+                        .WithMany("RelatedBlogs")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("JuanApp.Models.Blog", "RelatedBlog")
+                        .WithMany()
+                        .HasForeignKey("RelatedBlogId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired()
+                        .HasConstraintName("FK_BlogRelations_Blogs_RelatedBlogId");
+
+                    b.Navigation("Blog");
+
+                    b.Navigation("RelatedBlog");
+                });
+
             modelBuilder.Entity("JuanApp.Models.ProductColor", b =>
                 {
                     b.HasOne("JuanApp.Models.Color", "Color")
@@ -277,6 +318,11 @@ namespace JuanApp.Data.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("Size");
+                });
+
+            modelBuilder.Entity("JuanApp.Models.Blog", b =>
+                {
+                    b.Navigation("RelatedBlogs");
                 });
 
             modelBuilder.Entity("JuanApp.Models.Color", b =>

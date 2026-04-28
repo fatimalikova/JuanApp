@@ -1,0 +1,146 @@
+﻿@model List<JuanApp.Models.Blog>
+
+@{
+    ViewData["Title"] = "Manage Blogs";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Blogs</h4>
+                    <a asp-area="Manage" asp-controller="Blog" asp-action="Create" class="btn btn-primary btn-sm">Add New Blog</a>
+                </div>
+                <div class="card-body">
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Published Date</th>
+                                        <th>Image</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var blog in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <strong>@blog.Title</strong>
+                                            </td>
+                                            <td>@blog.Author</td>
+                                            <td>@blog.PublishedDate.ToString("MMMM dd, yyyy")</td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(blog.MainImageUrl))
+                                                {
+                                                    <img src="~/assets/img/blog/@blog.MainImageUrl" alt="@blog.Title" style="max-width: 50px; max-height: 50px;" />
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">No Image</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-secondary" data-bs-toggle="modal" data-bs-target="#detailModal" 
+                                                        data-id="@blog.Id" data-title="@blog.Title" data-author="@blog.Author" 
+                                                        data-date="@blog.PublishedDate.ToString("MMMM dd, yyyy")" data-image="@blog.MainImageUrl"
+                                                        data-content="@Html.Raw(System.Net.WebUtility.HtmlEncode(blog.Content))">
+                                                    Detail
+                                                </button>
+                                                <a asp-area="Manage" asp-controller="Blog" asp-action="Edit" asp-route-id="@blog.Id" class="btn btn-sm btn-info">Edit</a>
+                                                <a asp-area="Manage" asp-controller="Blog" asp-action="Delete" asp-route-id="@blog.Id" class="btn btn-sm btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            No blogs found. <a asp-area="Manage" asp-controller="Blog" asp-action="Create">Create your first blog</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalLabel">Blog Detail</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="blogImage" class="mb-3">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Title:</strong></label>
+                    <p id="blogTitle"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Author:</strong></label>
+                    <p id="blogAuthor"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Published Date:</strong></label>
+                    <p id="blogDate"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Content:</strong></label>
+                    <div class="border p-3 bg-light" id="blogContent" style="max-height: 300px; overflow-y: auto;">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a id="editBtn" href="#" class="btn btn-info">Edit</a>
+                <a id="deleteBtn" href="#" class="btn btn-danger">Delete</a>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const detailModal = document.getElementById('detailModal');
+        detailModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const blogId = button.getAttribute('data-id');
+            const blogTitle = button.getAttribute('data-title');
+            const blogAuthor = button.getAttribute('data-author');
+            const blogDate = button.getAttribute('data-date');
+            const blogImage = button.getAttribute('data-image');
+            const blogContent = button.getAttribute('data-content');
+
+            // Update modal content
+            document.getElementById('blogTitle').textContent = blogTitle;
+            document.getElementById('blogAuthor').textContent = blogAuthor;
+            document.getElementById('blogDate').textContent = blogDate;
+            document.getElementById('blogContent').innerHTML = decodeURIComponent(blogContent).replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'");
+
+            // Update image
+            const imageDiv = document.getElementById('blogImage');
+            if (blogImage && blogImage.trim() !== '') {
+                imageDiv.innerHTML = `<img src="~/assets/img/blog/${blogImage}" alt="${blogTitle}" style="max-width: 100%; height: auto;" />`;
+            } else {
+                imageDiv.innerHTML = '<span class="text-muted">No Image</span>';
+            }
+
+            // Update buttons
+            document.getElementById('editBtn').href = `/Manage/Blog/Edit/${blogId}`;
+            document.getElementById('deleteBtn').href = `/Manage/Blog/Delete/${blogId}`;
+        });
+    </script>
+}
+

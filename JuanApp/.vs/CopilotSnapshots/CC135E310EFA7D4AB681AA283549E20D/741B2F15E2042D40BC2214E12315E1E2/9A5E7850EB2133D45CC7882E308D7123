@@ -1,0 +1,202 @@
+﻿using JuanApp.Data;
+using JuanApp.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace JuanApp.Areas.Manage.Controllers
+{
+    public class ProductController : Controller
+    {
+        private readonly JuanDbContext _context;
+
+        public ProductController(JuanDbContext context)
+        {
+            _context = context;
+        }
+
+        [Area("Manage")]
+        public async Task<IActionResult> Index()
+        {
+            var products = await _context.Products.ToListAsync();
+            return View(products);
+        }
+
+        [Area("Manage")]
+        [HttpGet]
+        public async Task<IActionResult> GetProduct(Guid id)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return Json(new
+            {
+                id = product.Id,
+                name = product.Name,
+                description = product.Description,
+                price = product.Price,
+                discountPercentage = product.DiscountPercentage,
+                mainImageUrl = product.MainImageUrl,
+                inStock = product.InStock,
+                isNew = product.IsNew
+            });
+        }
+
+        [Area("Manage")]
+        public async Task<IActionResult> Images(Guid id)
+        {
+            var product = await _context.Products
+                .Include(p => p.ProductImages)
+                .FirstOrDefaultAsync(p => p.Id == id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            ViewBag.ProductId = id;
+            ViewBag.ProductName = product.Name;
+            return View(product.ProductImages ?? new List<ProductImage>());
+        }
+
+        [Area("Manage")]
+        [HttpPost]
+        public async Task<IActionResult> AddImage(Guid productId, string imageUrl)
+        {
+            if (string.IsNullOrEmpty(imageUrl))
+            {
+                return BadRequest("Image URL is required");
+            }
+
+            var product = await _context.Products.FindAsync(productId);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            var productImage = new ProductImage
+            {
+                Id = Guid.NewGuid(),
+                ProductId = productId,
+                ImageUrl = imageUrl
+            };
+
+            _context.ProductImages.Add(productImage);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { id = productImage.Id, imageUrl = productImage.ImageUrl });
+        }
+
+        [Area("Manage")]
+        [HttpPost]
+        public async Task<IActionResult> DeleteImage(Guid imageId)
+        {
+            var productImage = await _context.ProductImages.FindAsync(imageId);
+            if (productImage == null)
+            {
+                return NotFound();
+            }
+
+            _context.ProductImages.Remove(productImage);
+            await _context.SaveChangesAsync();
+
+            return Ok();
+        }
+
+        [Area("Manage")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [Area("Manage")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                product.Id = Guid.NewGuid();
+                _context.Add(product);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(product);
+        }
+
+        [Area("Manage")]
+        public async Task<IActionResult> Edit(Guid id)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+
+        [Area("Manage")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(Guid id, Product product)
+        {
+            if (id != product.Id)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(product);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProductExists(product.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+            }
+            return View(product);
+        }
+
+        [Area("Manage")]
+        public async Task<IActionResult> Delete(Guid id)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            return View(product);
+        }
+
+        [Area("Manage")]
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(Guid id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product != null)
+            {
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool ProductExists(Guid id)
+        {
+            return _context.Products.Any(e => e.Id == id);
+        }
+    }
+}

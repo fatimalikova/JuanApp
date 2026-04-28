@@ -1,0 +1,29 @@
+﻿using JuanApp.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace JuanApp.Data.Configurations
+{
+    public class BlogRelationConfiguration : IEntityTypeConfiguration<BlogRelation>
+    {
+        public void Configure(EntityTypeBuilder<BlogRelation> builder)
+        {
+            builder.Property(br => br.BlogId)
+               .IsRequired();
+
+            builder.Property(br => br.RelatedBlogId)
+                   .IsRequired();
+
+            builder.HasOne(br => br.Blog)
+                   .WithMany()
+                   .HasForeignKey(br => br.BlogId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+
+            builder.HasOne(br => br.RelatedBlog)
+                   .WithMany()
+                   .HasForeignKey(br => br.RelatedBlogId)
+                   .OnDelete(DeleteBehavior.NoAction);
+        }
+    }
+}

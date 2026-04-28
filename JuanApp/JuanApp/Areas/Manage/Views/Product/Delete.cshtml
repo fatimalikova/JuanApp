@@ -1,0 +1,96 @@
+@model JuanApp.Models.Product
+
+@{
+    ViewData["Title"] = "Delete Product";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4 class="card-title mb-0">Delete Product</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <strong>Warning!</strong> Are you sure you want to delete this product? This action cannot be undone.
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Product Name:</strong></label>
+                        <p>@Model.Name</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Description:</strong></label>
+                        <p>@Model.Description</p>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Price:</strong></label>
+                                <p>$@Model.Price.ToString("F2")</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Discount:</strong></label>
+                                <p>@Model.DiscountPercentage%</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Stock Status:</strong></label>
+                                <p>
+                                    @if (Model.InStock)
+                                    {
+                                        <span class="badge bg-success">In Stock</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Out of Stock</span>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label"><strong>New Product:</strong></label>
+                                <p>
+                                    @if (Model.IsNew)
+                                    {
+                                        <span class="badge bg-info">Yes</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">No</span>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.MainImageUrl))
+                    {
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Image:</strong></label>
+                            <div>
+                                <img src="~/assets/img/products/@Model.MainImageUrl" alt="@Model.Name" style="max-width: 200px; height: auto;" />
+                            </div>
+                        </div>
+                    }
+
+                    <form asp-area="Manage" asp-controller="Product" asp-action="Delete" method="post" style="display:inline;">
+                        <input type="hidden" asp-for="Id" />
+                        <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                    </form>
+                    <a asp-area="Manage" asp-controller="Product" asp-action="Index" class="btn btn-secondary">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

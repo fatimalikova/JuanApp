@@ -1,0 +1,68 @@
+﻿@model List<JuanApp.Models.Blog>
+
+@{
+    ViewData["Title"] = "Manage Blogs";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Blogs</h4>
+                    <a href="#" class="btn btn-primary btn-sm">Add New Blog</a>
+                </div>
+                <div class="card-body">
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Author</th>
+                                        <th>Published Date</th>
+                                        <th>Image</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var blog in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <strong>@blog.Title</strong>
+                                            </td>
+                                            <td>@blog.Author</td>
+                                            <td>@blog.PublishedDate.ToString("MMMM dd, yyyy")</td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(blog.MainImageUrl))
+                                                {
+                                                    <img src="~/assets/img/blog/@blog.MainImageUrl" alt="@blog.Title" style="max-width: 50px; max-height: 50px;" />
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">No Image</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a href="#" class="btn btn-sm btn-info">Edit</a>
+                                                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            No blogs found. <a href="#">Create your first blog</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

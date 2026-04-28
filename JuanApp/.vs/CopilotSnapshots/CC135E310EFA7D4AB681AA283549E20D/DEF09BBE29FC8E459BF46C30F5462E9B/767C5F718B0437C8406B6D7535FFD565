@@ -1,0 +1,57 @@
+﻿@model JuanApp.Models.Blog
+
+@{
+    ViewData["Title"] = "Edit Blog";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Edit Blog</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-area="Manage" asp-controller="Blog" asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <label asp-for="Title" class="form-label">Title</label>
+                            <input asp-for="Title" class="form-control" required />
+                            <span asp-validation-for="Title" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Author" class="form-label">Author</label>
+                            <input asp-for="Author" class="form-control" required />
+                            <span asp-validation-for="Author" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="MainImageUrl" class="form-label">Main Image URL</label>
+                            <input asp-for="MainImageUrl" class="form-control" />
+                            @if (!string.IsNullOrEmpty(Model.MainImageUrl))
+                            {
+                                <div class="mt-2">
+                                    <img src="~/assets/img/blog/@Model.MainImageUrl" alt="Current Image" style="max-width: 150px; height: auto;" />
+                                </div>
+                            }
+                            <span asp-validation-for="MainImageUrl" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Content" class="form-label">Content</label>
+                            <textarea asp-for="Content" class="form-control" rows="8" required></textarea>
+                            <span asp-validation-for="Content" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Update Blog</button>
+                            <a asp-area="Manage" asp-controller="Blog" asp-action="Index" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

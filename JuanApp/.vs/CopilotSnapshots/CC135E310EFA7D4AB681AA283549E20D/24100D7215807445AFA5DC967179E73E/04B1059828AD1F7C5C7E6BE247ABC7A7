@@ -1,0 +1,23 @@
+﻿using JuanApp.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
+namespace JuanApp.Areas.Manage.Controllers
+{
+    public class BlogController : Controller
+    {
+        private readonly JuanDbContext _context;
+
+        public BlogController(JuanDbContext context)
+        {
+            _context = context;
+        }
+
+        [Area("Manage")]
+        public async Task<IActionResult> Index()
+        {
+            var blogs = await _context.Blogs.ToListAsync();
+            return View(blogs);
+        }
+    }
+}

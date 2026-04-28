@@ -54,28 +54,38 @@
                             </form>
                         </div>
                         <!-- widget item end -->
-                        <!-- widget item start -->
-                        <div class="blog-widget">
-                            <h4 class="blog-widget-title">Recent Posts</h4>
-                            <ul class="recent-posts-inner">
-                                @foreach(var recentPost in Model.RecentPosts)
-                                {
-                                    <li>
-                                        <div class="recent-posts-thumb">
-                                            @if (!string.IsNullOrEmpty(recentPost.MainImageUrl))
-                                            {
-                                            <img src="~/assets/img/blog/@recentPost.MainImageUrl" alt="recent post thumb">
-                                            }
-                                        </div>
-                                        <div class="recent-posts-body">
-                                            <span class="recent-posts-meta">@recentPost.CreatedAt.ToString("MMMM dd, yyyy")</span>
-                                            <h6 class="recent-posts-title"><a href="@Url.Action("Detail", "Blog", new { id = recentPost.Id })">@recentPost.Title</a></h6>
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
-                        </div>
-                        <!-- widget item end -->
+                    <!-- widget item start -->
+                    <div class="blog-widget">
+                        <h4 class="blog-widget-title">Recent Posts</h4>
+                        <ul class="recent-posts-inner">
+                            @foreach(var blog in Model.RelatedBlogs)
+                            {
+                                <li class="recent-posts">
+                                    <div class="recent-posts-image">
+                                        <a href="blog-details.html"><img src="~/assets/img/blog/@blog.RelatedBlog.MainImageUrl" alt="post thumb"></a>
+                                    </div>
+                                    <div class="recent-posts-body">
+                                        <span class="recent-posts-meta">@blog.RelatedBlog.PublishedDate.ToString("MMMM dd, yyyy")</span>
+                                        <h6 class="recent-posts-title"><a href="blog-details.html">@blog.RelatedBlog.Title</a></h6>
+                                    </div>
+                                </li>
+                                @* <li>
+                                    <div class="recent-posts-image">
+                                        <a href="@Url.Action("Detail", "Blog", new { id = blog.Id })">
+                                            <img src="~/assets/img/blog/@blog..MainImageUrl" alt="post thumb">
+                                        </a>
+                                    </div>
+                                    <div class="recent-posts-body">
+                                        <span class="recent-posts-meta">@blog.CreatedDate.ToString("MMMM dd, yyyy")</span>
+                                        <h6 class="recent-posts-title">
+                                            <a href="@Url.Action("Detail", "Blog", new { id = blog.Id })">@blog.Title</a>
+                                        </h6>
+                                    </div>
+                                </li> *@
+                            }
+                        </ul>
+                    </div>
+                    <!-- widget item end -->
                         <!-- widget item start -->
                         <div class="blog-widget">
                             <h4 class="blog-widget-title">Categories</h4>

@@ -1,0 +1,55 @@
+﻿@model JuanApp.Models.Blog
+
+@{
+    ViewData["Title"] = "Blog Detail";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Blog Detail</h4>
+                    <div>
+                        <a asp-area="Manage" asp-controller="Blog" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-sm btn-info">Edit</a>
+                        <a asp-area="Manage" asp-controller="Blog" asp-action="Index" class="btn btn-sm btn-secondary">Back to List</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.MainImageUrl))
+                    {
+                        <div class="mb-3">
+                            <img src="~/assets/img/blog/@Model.MainImageUrl" alt="@Model.Title" style="max-width: 100%; height: auto;" />
+                        </div>
+                    }
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Title:</strong></label>
+                        <p>@Model.Title</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Author:</strong></label>
+                        <p>@Model.Author</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Published Date:</strong></label>
+                        <p>@Model.PublishedDate.ToString("MMMM dd, yyyy")</p>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Content:</strong></label>
+                        <div class="border p-3 bg-light">
+                            @Html.Raw(Model.Content)
+                        </div>
+                    </div>
+
+                    <div class="mt-3">
+                        <a asp-area="Manage" asp-controller="Blog" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
