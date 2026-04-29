@@ -77,11 +77,11 @@ wwwroot\assets\img\testimonial\tm-1.jpg
 wwwroot\assets\img\testimonial\tm-2.jpg
 wwwroot\assets\img\testimonial\tm-3.jpg
 wwwroot\assets\js\active.js
-wwwroot\assets\js\main.js
 wwwroot\assets\js\modernizr-2.8.3.min.js
 wwwroot\assets\js\plugins.js
 wwwroot\assets\js\vendor.js
 wwwroot\favicon.ico
+wwwroot\assets\js\main.js
 wwwroot\manage\css\maps\style.css.map
 wwwroot\manage\css\style.css
 wwwroot\manage\docs\documentation.html

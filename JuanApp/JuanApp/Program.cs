@@ -1,5 +1,7 @@
 using JuanApp.Data;
+using JuanApp.Models;
 using JuanApp.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,18 @@ builder.Services.AddSession(options =>
     //options.Cookie.HttpOnly = true;
     //options.Cookie.IsEssential = true;
 });
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
+{
+    opt.Password.RequireDigit = true;
+    opt.Password.RequiredLength = 6;
+    opt.Password.RequireNonAlphanumeric = true;
+    opt.Password.RequireUppercase = true;
+    opt.Password.RequireLowercase = true;
+
+    opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+    opt.Lockout.MaxFailedAccessAttempts = 3;
+    opt.Lockout.AllowedForNewUsers = true;
+}).AddEntityFrameworkStores<JuanDbContext>();
 
 var app = builder.Build();
 
@@ -26,9 +40,11 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+app.UseSession();
+app.UseRouting();
 
 app.UseHttpsRedirection();
-app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
 

@@ -1,0 +1,30 @@
+﻿using JuanApp.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
+namespace JuanApp.Areas.Manage.Controllers
+{
+    public class AdminAccountController(UserManager<AppUser> userManager) : Controller
+    {
+        [Area("Manage")]
+        public async  Task<IActionResult> CreateAdmin()
+        {
+            AppUser admin = new AppUser
+            {
+                UserName = "_admin",
+                FullName = "Admin Adminov",
+                Email = "admin@example.com"
+            };
+            IdentityResult result = await userManager.CreateAsync(admin, "_Admin123!");
+            if (!result.Succeeded)
+                return Json(result.Errors);
+            await userManager.AddToRoleAsync(admin, "Admin");
+            return Content("Admin account created successfully.");
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+    }
+}

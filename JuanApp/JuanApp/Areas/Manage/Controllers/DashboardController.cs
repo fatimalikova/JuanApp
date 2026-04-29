@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace JuanApp.Areas.Manage.Controllers
 {
+    [Area("Manage")]
+    [Authorize]
     public class DashboardController : Controller
     {
-        [Area("Manage")]
         public IActionResult Index()
         {
             return View();

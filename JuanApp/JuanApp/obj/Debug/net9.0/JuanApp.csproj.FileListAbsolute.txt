@@ -280,7 +280,6 @@ C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\bin\Debug\net9.0\
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Scripting.resources.dll
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Scripting.resources.dll
-C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\aout0b9u7n-{0}-n4nfmnm54j-n4nfmnm54j.gz
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\ohys1sdr7i-{0}-bayw4lhcpo-bayw4lhcpo.gz
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\g6tifgam0u-{0}-gvxlcjpn04-gvxlcjpn04.gz
@@ -849,3 +848,5 @@ C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\usqjg7vau4-{0}-t9xrnvbwrz-t9xrnvbwrz.gz
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\86dqqudhbp-{0}-0ajy26sc3m-0ajy26sc3m.gz
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\dqdb949lox-{0}-xx02ztqvw3-xx02ztqvw3.gz
+C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt

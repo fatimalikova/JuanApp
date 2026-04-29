@@ -1,10 +1,10 @@
 ﻿using JuanApp.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 
 namespace JuanApp.Data
 {
-    public class JuanDbContext(DbContextOptions<JuanDbContext> options) : DbContext(options)
+    public class JuanDbContext(DbContextOptions<JuanDbContext> options) : IdentityDbContext<AppUser>(options)
     {
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

@@ -5,23 +5,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JuanApp.Areas.Manage.Controllers
 {
-    public class ProductController : Controller
+    [Area("Manage")]
+    public class ProductController(JuanDbContext _context) : Controller
     {
-        private readonly JuanDbContext _context;
+        
 
-        public ProductController(JuanDbContext context)
-        {
-            _context = context;
-        }
-
-        [Area("Manage")]
         public async Task<IActionResult> Index()
         {
             var products = await _context.Products.ToListAsync();
             return View(products);
         }
 
-        [Area("Manage")]
         [HttpGet]
         public async Task<IActionResult> GetProduct(Guid id)
         {
@@ -43,7 +37,7 @@ namespace JuanApp.Areas.Manage.Controllers
             });
         }
 
-        [Area("Manage")]
+
         public async Task<IActionResult> Images(Guid id)
         {
             var product = await _context.Products
@@ -60,7 +54,6 @@ namespace JuanApp.Areas.Manage.Controllers
             return View(product.ProductImages ?? new List<ProductImage>());
         }
 
-        [Area("Manage")]
         [HttpPost]
         public async Task<IActionResult> AddImage(Guid productId, string imageUrl)
         {
@@ -88,7 +81,6 @@ namespace JuanApp.Areas.Manage.Controllers
             return Ok(new { id = productImage.Id, imageUrl = productImage.ImageUrl });
         }
 
-        [Area("Manage")]
         [HttpPost]
         public async Task<IActionResult> DeleteImage(Guid imageId)
         {
@@ -104,13 +96,11 @@ namespace JuanApp.Areas.Manage.Controllers
             return Ok();
         }
 
-        [Area("Manage")]
         public IActionResult Create()
         {
             return View();
         }
 
-        [Area("Manage")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Product product)
@@ -125,7 +115,7 @@ namespace JuanApp.Areas.Manage.Controllers
             return View(product);
         }
 
-        [Area("Manage")]
+    
         public async Task<IActionResult> Edit(Guid id)
         {
             var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
@@ -136,7 +126,6 @@ namespace JuanApp.Areas.Manage.Controllers
             return View(product);
         }
 
-        [Area("Manage")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, Product product)
@@ -168,8 +157,6 @@ namespace JuanApp.Areas.Manage.Controllers
             }
             return View(product);
         }
-
-        [Area("Manage")]
         public async Task<IActionResult> Delete(Guid id)
         {
             var product = await _context.Products.FirstOrDefaultAsync(p => p.Id == id);
@@ -180,7 +167,6 @@ namespace JuanApp.Areas.Manage.Controllers
             return View(product);
         }
 
-        [Area("Manage")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)

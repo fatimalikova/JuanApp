@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace JuanApp.Areas.Manage.Controllers
 {
+    [Area("Manage")]
     public class SliderController : Controller
     {
         private readonly JuanDbContext _context;
@@ -14,14 +15,13 @@ namespace JuanApp.Areas.Manage.Controllers
             _context = context;
         }
 
-        [Area("Manage")]
+      
         public async Task<IActionResult> Index()
         {
             var sliders = await _context.Sliders.ToListAsync();
             return View(sliders);
         }
 
-        [Area("Manage")]
         [HttpGet]
         public async Task<IActionResult> GetSlider(Guid id)
         {
@@ -42,13 +42,11 @@ namespace JuanApp.Areas.Manage.Controllers
             });
         }
 
-        [Area("Manage")]
         public IActionResult Create()
         {
             return View();
         }
 
-        [Area("Manage")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Slider slider)
@@ -63,7 +61,7 @@ namespace JuanApp.Areas.Manage.Controllers
             return View(slider);
         }
 
-        [Area("Manage")]
+     
         public async Task<IActionResult> Edit(Guid id)
         {
             var slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
@@ -74,7 +72,7 @@ namespace JuanApp.Areas.Manage.Controllers
             return View(slider);
         }
 
-        [Area("Manage")]
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, Slider slider)
@@ -107,7 +105,7 @@ namespace JuanApp.Areas.Manage.Controllers
             return View(slider);
         }
 
-        [Area("Manage")]
+       
         public async Task<IActionResult> Delete(Guid id)
         {
             var slider = await _context.Sliders.FirstOrDefaultAsync(s => s.Id == id);
@@ -118,7 +116,7 @@ namespace JuanApp.Areas.Manage.Controllers
             return View(slider);
         }
 
-        [Area("Manage")]
+       
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)

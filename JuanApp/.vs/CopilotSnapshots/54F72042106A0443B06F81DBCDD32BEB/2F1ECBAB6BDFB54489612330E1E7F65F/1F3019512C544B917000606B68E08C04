@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+	  <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0" />
+	  <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Manage\Data\" />
+    <Folder Include="Areas\Manage\Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\manage\css\.DS_Store" />
+    <None Include="wwwroot\manage\css\maps\.DS_Store" />
+    <None Include="wwwroot\manage\fonts\.DS_Store" />
+    <None Include="wwwroot\manage\fonts\karla\.DS_Store" />
+    <None Include="wwwroot\manage\images\.DS_Store" />
+    <None Include="wwwroot\manage\images\auth\.DS_Store" />
+    <None Include="wwwroot\manage\images\faces\.DS_Store" />
+    <None Include="wwwroot\manage\js\.DS_Store" />
+    <None Include="wwwroot\manage\pages\.DS_Store" />
+    <None Include="wwwroot\manage\pages\charts\.DS_Store" />
+    <None Include="wwwroot\manage\pages\forms\.DS_Store" />
+    <None Include="wwwroot\manage\pages\icons\.DS_Store" />
+    <None Include="wwwroot\manage\pages\samples\.DS_Store" />
+    <None Include="wwwroot\manage\pages\tables\.DS_Store" />
+    <None Include="wwwroot\manage\pages\ui-features\.DS_Store" />
+    <None Include="wwwroot\manage\partials\.DS_Store" />
+    <None Include="wwwroot\manage\scss\.DS_Store" />
+    <None Include="wwwroot\manage\scss\components\.DS_Store" />
+    <None Include="wwwroot\manage\scss\components\plugin-overrides\.DS_Store" />
+    <None Include="wwwroot\manage\scss\mixins\.DS_Store" />
+    <None Include="wwwroot\manage\vendors\.DS_Store" />
+  </ItemGroup>
+
+</Project>

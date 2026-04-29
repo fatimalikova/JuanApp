@@ -1,0 +1,193 @@
+﻿@using JuanApp.Areas.Manage.ViewModels
+@model JuanApp.Areas.Manage.ViewModels.AdminLoginVm
+
+@{
+    ViewData["Title"] = "Admin Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - JuanApp</title>
+    <link rel="stylesheet" href="~/manage/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/manage/vendors/base/vendor.bundle.base.css">
+    <link rel="stylesheet" href="~/manage/css/style.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff1493 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .login-container {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-header h1 {
+            font-size: 28px;
+            color: #333;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .login-header p {
+            color: #999;
+            font-size: 14px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        .form-control::placeholder {
+            color: #bbb;
+        }
+        .btn-login {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+        }
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        .btn-login:active {
+            transform: translateY(0);
+        }
+        .text-danger {
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: 5px;
+            display: block;
+        }
+        .alert {
+            padding: 12px 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .alert-danger {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .alert-info {
+            background-color: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        .demo-credentials {
+            background: #f0f7ff;
+            border: 1px solid #b3d9ff;
+            border-radius: 5px;
+            padding: 15px;
+            margin-top: 20px;
+            font-size: 13px;
+            color: #333;
+        }
+        .demo-credentials h6 {
+            margin: 0 0 8px 0;
+            color: #333;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        .demo-credentials p {
+            margin: 0;
+            padding: 2px 0;
+        }
+        .form-group.has-error .form-control {
+            border-color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>Admin Panel</h1>
+            <p>JuanApp Management System</p>
+        </div>
+
+        @if (!ViewData.ModelState.IsValid)
+        {
+            <div class="alert alert-danger">
+                <strong>Login Failed!</strong>
+                <ul style="margin: 5px 0 0 20px; padding: 0;">
+                    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <li>@error.ErrorMessage</li>
+                    }
+                </ul>
+            </div>
+        }
+
+        <form asp-area="Manage" asp-controller="AdminAccount" asp-action="Login" method="post">
+            <div class="form-group">
+                <label asp-for="UserName" class="form-label">Username</label>
+                <input asp-for="UserName" 
+                       class="form-control @(ViewData.ModelState.ContainsKey(nameof(AdminLoginVm.UserName)) && ViewData.ModelState[nameof(AdminLoginVm.UserName)]?.Errors.Count > 0 ? "is-invalid" : "")" 
+                       placeholder="Enter your username" 
+                       required 
+                       autofocus />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" 
+                       class="form-control @(ViewData.ModelState.ContainsKey(nameof(AdminLoginVm.Password)) && ViewData.ModelState[nameof(AdminLoginVm.Password)]?.Errors.Count > 0 ? "is-invalid" : "")" 
+                       placeholder="Enter your password" 
+                       required />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn-login">Sign In</button>
+        </form>
+
+        @* <div class="demo-credentials">
+            <h6>📝 Demo Credentials:</h6>
+            <p><strong>Username:</strong> _admin</p>
+            <p><strong>Password:</strong> _Admin123!</p>
+        </div> *@
+    </div>
+
+    <script src="~/manage/vendors/base/vendor.bundle.base.js"></script>
+</body>
+</html>
