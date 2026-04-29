@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\account\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\account\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\areas\\manage\\controllers\\adminaccountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\areas\\manage\\controllers\\adminaccountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\viewmodels\\uservm\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\viewmodels\\uservm\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\account\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\account\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedHeight": 311,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "RegisterVm.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\ViewModels\\UserVm\\RegisterVm.cs",
+              "RelativeDocumentMoniker": "JuanApp\\ViewModels\\UserVm\\RegisterVm.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\ViewModels\\UserVm\\RegisterVm.cs",
+              "RelativeToolTip": "JuanApp\\ViewModels\\UserVm\\RegisterVm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-29T20:51:16.933Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -47,40 +60,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Account\\Index.cshtml",
-              "RelativeDocumentMoniker": "JuanApp\\Views\\Account\\Index.cshtml",
-              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Account\\Index.cshtml",
-              "RelativeToolTip": "JuanApp\\Views\\Account\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-29T19:50:54.844Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "JuanApp\\Controllers\\AccountController.cs",
               "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Controllers\\AccountController.cs",
               "RelativeToolTip": "JuanApp\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBsAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T19:41:14.587Z",
+              "WhenOpened": "2026-04-29T20:47:15.208Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "AdminAccountController.cs",
-              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\Controllers\\AdminAccountController.cs",
-              "RelativeDocumentMoniker": "JuanApp\\Areas\\Manage\\Controllers\\AdminAccountController.cs",
-              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\Controllers\\AdminAccountController.cs",
-              "RelativeToolTip": "JuanApp\\Areas\\Manage\\Controllers\\AdminAccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-29T19:40:44.679Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Account\\Index.cshtml",
+              "RelativeDocumentMoniker": "JuanApp\\Views\\Account\\Index.cshtml",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Account\\Index.cshtml",
+              "RelativeToolTip": "JuanApp\\Views\\Account\\Index.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACMAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-29T20:48:15.409Z",
               "EditorCaption": ""
             }
           ]
