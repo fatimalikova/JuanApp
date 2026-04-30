@@ -288,9 +288,18 @@
                                                 <i class="ion-ios-gear-outline"></i>
                                             </a>
                                             <ul class="dropdown-list">
-                                                <li><a href="login-register.html">login</a></li>
-                                                <li><a href="login-register.html">register</a></li>
-                                                <li><a href="my-account.html">my account</a></li>
+                                                @if (User.Identity.IsAuthenticated)
+                                                {
+                                                    <li><a asp-controller="Account" asp-action="userprofile">@User.Identity.Name</a></li>
+                                                    <li><a asp-controller="Account" asp-action="Logout">logout</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li><a asp-controller="Account" asp-action="Login">login</a></li>
+                                                    <li><a asp-controller="Account" asp-action="Register">register</a></li>
+                                                }
+                                                
+                                               
                                             </ul>
                                         </li>
                                         <li>
@@ -906,6 +915,7 @@
     <script src="~/assets/js/active.js"></script>
     <!--=== Main Js ===-->
     <script src="~/assets/js/main.js"></script>
+    @RenderSection("Scripts",required: false);
 </body>
 
 <!-- Mirrored from demo.hasthemes.com/juan-preview-v1/juan/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Mar 2021 22:36:53 GMT -->

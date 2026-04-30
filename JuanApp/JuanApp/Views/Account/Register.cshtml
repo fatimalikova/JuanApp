@@ -1,0 +1,57 @@
+﻿@using JuanApp.ViewModels.UserVm
+@model RegisterVm
+<main>
+<!-- login register wrapper start -->
+<div class="login-register-wrapper section-padding">
+    <div class="container">
+        <div class="member-area-from-wrap">
+            <div class="row">
+                <!-- Register Content Start -->
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="login-reg-form-wrap signup-form text-center">
+                        <h2>Register Form</h2>
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="single-input-item">
+                                <input asp-for="FullName" type="text" placeholder="Full Name" />
+                                <span asp-validation-for="FullName" class="text-danger"></span>
+                            </div>
+                            <div class="single-input-item">
+                                <input asp-for="UserName" type="text" placeholder="Username" />
+                                <span asp-validation-for="UserName" class="text-danger"></span>
+                            </div>
+                            <div class="single-input-item">
+                                <input asp-for="Email" type="email" placeholder="Enter your Email" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="single-input-item">
+                                        <input asp-for="Password" type="password" placeholder="Enter your Password" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="single-input-item">
+                                        <input asp-for="ConfirmPassword" type="password" placeholder="Repeat your Password" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-input-item">
+                                <button type="submit" class="btn">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Register Content End -->
+            </div>
+        </div>
+    </div>
+</div>
+</main>
+<!-- login register wrapper end -->
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+

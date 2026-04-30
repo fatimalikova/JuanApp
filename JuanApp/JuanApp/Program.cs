@@ -1,3 +1,4 @@
+using JuanApp.CustomError;
 using JuanApp.Data;
 using JuanApp.Models;
 using JuanApp.Services;
@@ -29,7 +30,9 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
     opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
     opt.Lockout.MaxFailedAccessAttempts = 3;
     opt.Lockout.AllowedForNewUsers = true;
-}).AddEntityFrameworkStores<JuanDbContext>();
+})
+    .AddErrorDescriber<CustomIdentityErrorDescriber>()
+    .AddEntityFrameworkStores<JuanDbContext>();
 
 var app = builder.Build();
 
