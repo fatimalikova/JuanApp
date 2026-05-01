@@ -1,0 +1,369 @@
+﻿@model List<JuanApp.Models.Product>
+
+@{
+    ViewData["Title"] = "Manage Products";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Products</h4>
+                    <a asp-area="Manage" asp-controller="Product" asp-action="Create" class="btn btn-primary btn-sm">Add New Product</a>
+                </div>
+                <div class="card-body">
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                        <th>Discount %</th>
+                                        <th>Stock</th>
+                                        <th>New</th>
+                                        <th>Image</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var product in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <strong>@product.Name</strong>
+                                            </td>
+                                            <td>$@product.Price.ToString("F2")</td>
+                                            <td>@product.DiscountPercentage%</td>
+                                            <td>
+                                                @if (product.InStock)
+                                                {
+                                                    <span class="badge bg-success">In Stock</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-danger">Out of Stock</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (product.IsNew)
+                                                {
+                                                    <span class="badge bg-info">New</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-secondary">-</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(product.MainImageUrl))
+                                                {
+                                                    <img src="~/assets/img/product/@product.MainImageUrl" alt="@product.Name" style="max-width: 50px; max-height: 50px;" />
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">No Image</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-secondary detail-btn" data-product-id="@product.Id">Detail</button>
+                                                <a asp-area="Manage" asp-controller="Product" asp-action="Images" asp-route-id="@product.Id" class="btn btn-sm btn-warning">Images</a>
+                                                <button type="button" class="btn btn-sm btn-info edit-btn" data-product-id="@product.Id">Edit</button>
+                                                <button type="button" class="btn btn-sm btn-danger delete-btn" data-product-id="@product.Id">Delete</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            No products found. <a asp-area="Manage" asp-controller="Product" asp-action="Create">Create your first product</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalLabel">Product Detail</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="productImage" class="mb-3"></div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Name:</strong></label>
+                    <p id="productName"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Description:</strong></label>
+                    <p id="productDescription"></p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Price:</strong></label>
+                            <p id="productPrice"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Discount %:</strong></label>
+                            <p id="productDiscount"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Stock Status:</strong></label>
+                            <p id="productStock"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label"><strong>New Product:</strong></label>
+                            <p id="productIsNew"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="detailCloseBtn">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editForm" method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="editId" name="Id" />
+                    <div class="mb-3">
+                        <label for="editName" class="form-label">Product Name</label>
+                        <input type="text" class="form-control" id="editName" name="Name" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="editDescription" name="Description" rows="4"></textarea>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editPrice" class="form-label">Price</label>
+                                <input type="number" class="form-control" id="editPrice" name="Price" step="0.01" required />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="editDiscountPercentage" class="form-label">Discount %</label>
+                                <input type="number" class="form-control" id="editDiscountPercentage" name="DiscountPercentage" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editMainImageUrl" class="form-label">Main Image URL</label>
+                        <input type="text" class="form-control" id="editMainImageUrl" name="MainImageUrl" />
+                        <div id="currentImage" class="mt-2"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="editInStock" name="InStock" />
+                                <label class="form-check-label" for="editInStock">In Stock</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="editIsNew" name="IsNew" />
+                                <label class="form-check-label" for="editIsNew">New Product</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="editCancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content border-danger">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Product</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong> Are you sure you want to delete this product? This action cannot be undone.
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Name:</strong></label>
+                    <p id="deleteProductName"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Description:</strong></label>
+                    <p id="deleteProductDescription"></p>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Price:</strong></label>
+                            <p id="deleteProductPrice"></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label class="form-label"><strong>Discount %:</strong></label>
+                            <p id="deleteProductDiscount"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="deleteCancelBtn">Cancel</button>
+                <form id="deleteForm" method="post" style="display: inline;">
+                    <input type="hidden" id="deleteId" name="Id" />
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Helper function to close modal
+        function closeModal(modalId) {
+            const modalElement = document.getElementById(modalId);
+            if (modalElement) {
+                const backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.remove();
+                }
+                modalElement.classList.remove('show');
+                modalElement.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        // Detail Button Click Handler
+        document.querySelectorAll('.detail-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const productId = this.getAttribute('data-product-id');
+                fetch(`/Manage/Product/GetProduct/${productId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('productName').textContent = data.name;
+                        document.getElementById('productDescription').textContent = data.description;
+                        document.getElementById('productPrice').textContent = '$' + parseFloat(data.price).toFixed(2);
+                        document.getElementById('productDiscount').textContent = data.discountPercentage + '%';
+                        document.getElementById('productStock').innerHTML = data.inStock ? '<span class="badge bg-success">In Stock</span>' : '<span class="badge bg-danger">Out of Stock</span>';
+                        document.getElementById('productIsNew').innerHTML = data.isNew ? '<span class="badge bg-info">Yes</span>' : '<span class="badge bg-secondary">No</span>';
+
+                        const imageDiv = document.getElementById('productImage');
+                        if (data.mainImageUrl && data.mainImageUrl.trim() !== '') {
+                            imageDiv.innerHTML = `<img src="/assets/img/product/${data.mainImageUrl}" alt="${data.name}" style="max-width: 100%; height: auto;" />`;
+                        } else {
+                            imageDiv.innerHTML = '<span class="text-muted">No Image</span>';
+                        }
+
+                        const detailModal = new bootstrap.Modal(document.getElementById('detailModal'));
+                        detailModal.show();
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+
+        // Detail Close Button
+        document.getElementById('detailCloseBtn').addEventListener('click', function() {
+            closeModal('detailModal');
+        });
+
+        // Edit Button Click Handler
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const productId = this.getAttribute('data-product-id');
+                fetch(`/Manage/Product/GetProduct/${productId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('editId').value = data.id;
+                        document.getElementById('editName').value = data.name;
+                        document.getElementById('editDescription').value = data.description || '';
+                        document.getElementById('editPrice').value = data.price;
+                        document.getElementById('editDiscountPercentage').value = data.discountPercentage || 0;
+                        document.getElementById('editMainImageUrl').value = data.mainImageUrl || '';
+                        document.getElementById('editInStock').checked = data.inStock;
+                        document.getElementById('editIsNew').checked = data.isNew;
+
+                        const imageDiv = document.getElementById('currentImage');
+                        if (data.mainImageUrl && data.mainImageUrl.trim() !== '') {
+                            imageDiv.innerHTML = `<img src="/assets/img/product/${data.mainImageUrl}" alt="${data.name}" style="max-width: 150px; height: auto;" />`;
+                        } else {
+                            imageDiv.innerHTML = '';
+                        }
+
+                        document.getElementById('editForm').action = `/Manage/Product/Edit/${productId}`;
+
+                        const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+                        editModal.show();
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+
+        // Edit Cancel Button
+        document.getElementById('editCancelBtn').addEventListener('click', function() {
+            closeModal('editModal');
+        });
+
+        // Delete Button Click Handler
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const productId = this.getAttribute('data-product-id');
+                fetch(`/Manage/Product/GetProduct/${productId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('deleteId').value = data.id;
+                        document.getElementById('deleteProductName').textContent = data.name;
+                        document.getElementById('deleteProductDescription').textContent = data.description;
+                        document.getElementById('deleteProductPrice').textContent = '$' + parseFloat(data.price).toFixed(2);
+                        document.getElementById('deleteProductDiscount').textContent = data.discountPercentage + '%';
+
+                        document.getElementById('deleteForm').action = `/Manage/Product/Delete/${productId}`;
+
+                        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+                        deleteModal.show();
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+
+        // Delete Cancel Button
+        document.getElementById('deleteCancelBtn').addEventListener('click', function() {
+            closeModal('deleteModal');
+        });
+    </script>
+}

@@ -1,0 +1,152 @@
+﻿@model JuanApp.Models.Product
+
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Edit Product</h4>
+                </div>
+                <div class="card-body">
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger">
+                            <h5>Validation Errors:</h5>
+                            <ul>
+                                @foreach (var modelState in ViewData.ModelState.Values)
+                                {
+                                    @foreach (var error in modelState.Errors)
+                                    {
+                                        <li>@error.ErrorMessage</li>
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    }
+                    <form asp-area="Manage" asp-controller="Product" asp-action="Edit" asp-route-id="@Model.Id" method="post" enctype="multipart/form-data">
+                        <input type="hidden" asp-for="Id" />
+                        <input type="hidden" name="currentMainImageUrl" value="@Model.MainImageUrl" />
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Product Name</label>
+                            <input asp-for="Name" class="form-control" required />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="mainImageFile" class="form-label">Main Image</label>
+                            <input type="file" id="mainImageFile" name="mainImageFile" class="form-control" accept="image/*" />
+                            <small class="text-muted">PNG, JPG, GIF up to 2MB - Leave empty to keep current image</small>
+                            <div id="imagePreviewContainer">
+                                @if (!string.IsNullOrEmpty(Model.MainImageUrl))
+                                {
+                                    <div class="mt-3 border p-3 rounded" style="background-color: #f8f9fa;" id="currentImageDiv">
+                                        <p class="mb-2"><strong>Current Image:</strong></p>
+                                        <div style="text-align: center;">
+                                            <img id="currentImage" src="~/assets/img/product/@Model.MainImageUrl" alt="Current Image" style="max-width: 250px; max-height: 250px; height: auto; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="mt-3 alert alert-info" id="noImageDiv">
+                                        <small>No image uploaded for this product yet. Upload an image above.</small>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Price" class="form-label">Price</label>
+                                    <input asp-for="Price" class="form-control" step="0.01" type="number" required />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="DiscountPercentage" class="form-label">Discount %</label>
+                                    <input asp-for="DiscountPercentage" class="form-control" type="number" />
+                                    <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label d-block mb-2">Product Status</label>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="inStock" asp-for="InStock" />
+                                        <label for="inStock" class="form-check-label"><strong>In Stock</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label class="form-label d-block mb-2">Product Type</label>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="isNew" asp-for="IsNew" />
+                                        <label for="isNew" class="form-check-label"><strong>New Product</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary">Update Product</button>
+                            <a asp-area="Manage" asp-controller="Product" asp-action="Index" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Handle image preview
+        const fileInput = document.getElementById('mainImageFile');
+        const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+
+            if (file) {
+                // Create a FileReader to read the selected file
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    // Create or update preview HTML
+                    const previewHtml = `
+                        <div class="mt-3 border p-3 rounded" style="background-color: #e8f5e9;" id="newImageDiv">
+                            <p class="mb-2"><strong>New Image Preview:</strong></p>
+                            <div style="text-align: center;">
+                                <img id="previewImage" src="${event.target.result}" alt="New Image Preview" style="max-width: 250px; max-height: 250px; height: auto; border-radius: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);" />
+                            </div>
+                        </div>
+                    `;
+
+                    imagePreviewContainer.innerHTML = previewHtml;
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                // Reset to original content if file selection is cancelled
+                location.reload();
+            }
+        });
+    </script>
+}

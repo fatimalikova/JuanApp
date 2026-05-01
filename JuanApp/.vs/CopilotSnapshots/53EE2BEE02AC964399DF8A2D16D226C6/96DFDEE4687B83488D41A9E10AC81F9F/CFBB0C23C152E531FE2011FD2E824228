@@ -1,0 +1,301 @@
+﻿@model List<JuanApp.Models.Slider>
+
+@{
+    ViewData["Title"] = "Manage Sliders";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Sliders</h4>
+                    <a asp-area="Manage" asp-controller="Slider" asp-action="Create" class="btn btn-primary btn-sm">Add New Slider</a>
+                </div>
+                <div class="card-body">
+                    @if (Model != null && Model.Count > 0)
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Etiket</th>
+                                        <th>Button Text</th>
+                                        <th>Image</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var slider in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <strong>@slider.Title</strong>
+                                            </td>
+                                            <td>@slider.Etiket</td>
+                                            <td>@slider.ButtonText</td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(slider.ImageUrl))
+                                                {
+                                                    <img src="~/assets/img/slider/@slider.ImageUrl" alt="@slider.Title" style="max-width: 50px; max-height: 50px;" />
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">No Image</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-sm btn-secondary detail-btn" data-slider-id="@slider.Id">Detail</button>
+                                                <button type="button" class="btn btn-sm btn-info edit-btn" data-slider-id="@slider.Id">Edit</button>
+                                                <button type="button" class="btn btn-sm btn-danger delete-btn" data-slider-id="@slider.Id">Delete</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-info">
+                            No sliders found. <a asp-area="Manage" asp-controller="Slider" asp-action="Create">Create your first slider</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Detail Modal -->
+<div class="modal fade" id="detailModal" tabindex="-1" aria-labelledby="detailModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="detailModalLabel">Slider Detail</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="sliderImage" class="mb-3"></div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Title:</strong></label>
+                    <p id="sliderTitle"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Etiket:</strong></label>
+                    <p id="sliderEtiket"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Description:</strong></label>
+                    <p id="sliderDescription"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Button Text:</strong></label>
+                    <p id="sliderButtonText"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Button URL:</strong></label>
+                    <p id="sliderButtonUrl"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="detailCloseBtn">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Edit Slider</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form id="editForm" method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="editId" name="Id" />
+                    <div class="mb-3">
+                        <label for="editTitle" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="editTitle" name="Title" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="editEtiket" class="form-label">Etiket</label>
+                        <input type="text" class="form-control" id="editEtiket" name="Etiket" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="editDescription" class="form-label">Description</label>
+                        <textarea class="form-control" id="editDescription" name="Description" rows="4"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editImageUrl" class="form-label">Image URL</label>
+                        <input type="text" class="form-control" id="editImageUrl" name="ImageUrl" />
+                        <div id="currentImage" class="mt-2"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="editButtonText" class="form-label">Button Text</label>
+                        <input type="text" class="form-control" id="editButtonText" name="ButtonText" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="editButtonUrl" class="form-label">Button URL</label>
+                        <input type="text" class="form-control" id="editButtonUrl" name="ButtonUrl" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="editCancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Update Slider</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content border-danger">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title" id="deleteModalLabel">Delete Slider</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning">
+                    <strong>Warning!</strong> Are you sure you want to delete this slider? This action cannot be undone.
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Title:</strong></label>
+                    <p id="deleteTitle"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Etiket:</strong></label>
+                    <p id="deleteEtiket"></p>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label"><strong>Description:</strong></label>
+                    <p id="deleteDescription"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="deleteCancelBtn">Cancel</button>
+                <form id="deleteForm" method="post" style="display: inline;">
+                    <input type="hidden" id="deleteId" name="Id" />
+                    <button type="submit" class="btn btn-danger">Confirm Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Helper function to close modal
+        function closeModal(modalId) {
+            const modalElement = document.getElementById(modalId);
+            if (modalElement) {
+                const backdrop = document.querySelector('.modal-backdrop');
+                if (backdrop) {
+                    backdrop.remove();
+                }
+                modalElement.classList.remove('show');
+                modalElement.style.display = 'none';
+                document.body.classList.remove('modal-open');
+            }
+        }
+
+        // Detail Button Click Handler
+        document.querySelectorAll('.detail-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const sliderId = this.getAttribute('data-slider-id');
+                fetch(`/Manage/Slider/GetSlider/${sliderId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('sliderTitle').textContent = data.title;
+                        document.getElementById('sliderEtiket').textContent = data.etiket;
+                        document.getElementById('sliderDescription').textContent = data.description;
+                        document.getElementById('sliderButtonText').textContent = data.buttonText;
+                        document.getElementById('sliderButtonUrl').textContent = data.buttonUrl;
+
+                        const imageDiv = document.getElementById('sliderImage');
+                        if (data.imageUrl && data.imageUrl.trim() !== '') {
+                            imageDiv.innerHTML = `<img src="/assets/img/slider/${data.imageUrl}" alt="${data.title}" style="max-width: 100%; height: auto;" />`;
+                        } else {
+                            imageDiv.innerHTML = '<span class="text-muted">No Image</span>';
+                        }
+
+                        const detailModal = new bootstrap.Modal(document.getElementById('detailModal'));
+                        detailModal.show();
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+
+        // Detail Close Button
+        document.getElementById('detailCloseBtn').addEventListener('click', function() {
+            closeModal('detailModal');
+        });
+
+        // Edit Button Click Handler
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const sliderId = this.getAttribute('data-slider-id');
+                fetch(`/Manage/Slider/GetSlider/${sliderId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('editId').value = data.id;
+                        document.getElementById('editTitle').value = data.title;
+                        document.getElementById('editEtiket').value = data.etiket || '';
+                        document.getElementById('editDescription').value = data.description || '';
+                        document.getElementById('editImageUrl').value = data.imageUrl || '';
+                        document.getElementById('editButtonText').value = data.buttonText || '';
+                        document.getElementById('editButtonUrl').value = data.buttonUrl || '';
+
+                        const imageDiv = document.getElementById('currentImage');
+                        if (data.imageUrl && data.imageUrl.trim() !== '') {
+                            imageDiv.innerHTML = `<img src="/assets/img/slider/${data.imageUrl}" alt="${data.title}" style="max-width: 150px; height: auto;" />`;
+                        } else {
+                            imageDiv.innerHTML = '';
+                        }
+
+                        document.getElementById('editForm').action = `/Manage/Slider/Edit/${sliderId}`;
+
+                        const editModal = new bootstrap.Modal(document.getElementById('editModal'));
+                        editModal.show();
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+
+        // Edit Cancel Button
+        document.getElementById('editCancelBtn').addEventListener('click', function() {
+            closeModal('editModal');
+        });
+
+        // Delete Button Click Handler
+        document.querySelectorAll('.delete-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const sliderId = this.getAttribute('data-slider-id');
+                fetch(`/Manage/Slider/GetSlider/${sliderId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('deleteId').value = data.id;
+                        document.getElementById('deleteTitle').textContent = data.title;
+                        document.getElementById('deleteEtiket').textContent = data.etiket;
+                        document.getElementById('deleteDescription').textContent = data.description;
+
+                        document.getElementById('deleteForm').action = `/Manage/Slider/Delete/${sliderId}`;
+
+                        const deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+                        deleteModal.show();
+                    })
+                    .catch(error => console.error('Error:', error));
+            });
+        });
+
+        // Delete Cancel Button
+        document.getElementById('deleteCancelBtn').addEventListener('click', function() {
+            closeModal('deleteModal');
+        });
+    </script>
+}

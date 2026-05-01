@@ -58,9 +58,13 @@
             <div class="modal-body">
                 <form id="addImageForm">
                     <div class="mb-3">
-                        <label for="imageUrl" class="form-label">Image URL</label>
-                        <input type="text" class="form-control" id="imageUrl" placeholder="e.g., product-image-1.jpg" required />
-                        <small class="text-muted">Enter the image filename from ~/assets/img/product/ folder</small>
+                        <label for="imageFile" class="form-label">Choose Image</label>
+                        <input type="file" class="form-control" id="imageFile" accept="image/*" required />
+                        <small class="text-muted">PNG, JPG, GIF up to 2MB</small>
+                    </div>
+                    <div id="imagePreview" style="display: none; margin-top: 15px; text-align: center;">
+                        <p class="mb-2"><strong>Preview:</strong></p>
+                        <img id="previewImg" style="max-width: 100%; max-height: 250px; border-radius: 5px;" />
                     </div>
                 </form>
             </div>
@@ -75,26 +79,91 @@
 @section Scripts {
     <script>
         const productId = '@ViewBag.ProductId';
+        let addImageModal = null;
 
-        // Add Image Button Click
-        document.getElementById('addImageBtn').addEventListener('click', function() {
-            document.getElementById('imageUrl').value = '';
-            const addImageModal = new bootstrap.Modal(document.getElementById('addImageModal'));
-            addImageModal.show();
+        // Initialize when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+            const modalElement = document.getElementById('addImageModal');
+            addImageModal = new bootstrap.Modal(modalElement);
+
+            setupEventListeners();
         });
 
-        // Save Image Button Click
-        document.getElementById('saveImageBtn').addEventListener('click', function() {
-            const imageUrl = document.getElementById('imageUrl').value;
+        function setupEventListeners() {
+            // Add Image Button Click
+            const addImageBtn = document.getElementById('addImageBtn');
+            if (addImageBtn) {
+                addImageBtn.addEventListener('click', function() {
+                    clearModal();
+                    addImageModal.show();
+                });
+            }
 
-            if (!imageUrl) {
-                alert('Please enter an image URL');
+            // Image file preview
+            const imageFileInput = document.getElementById('imageFile');
+            if (imageFileInput) {
+                imageFileInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(event) {
+                            document.getElementById('previewImg').src = event.target.result;
+                            document.getElementById('imagePreview').style.display = 'block';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            }
+
+            // Save Image Button Click
+            const saveImageBtn = document.getElementById('saveImageBtn');
+            if (saveImageBtn) {
+                saveImageBtn.addEventListener('click', saveImage);
+            }
+
+            // Modal hidden event - for cleanup after cancel or close
+            const modalElement = document.getElementById('addImageModal');
+            if (modalElement) {
+                modalElement.addEventListener('hidden.bs.modal', function() {
+                    clearModal();
+                });
+            }
+
+            // Use event delegation for delete buttons
+            const gallery = document.getElementById('imageGallery');
+            if (gallery) {
+                gallery.addEventListener('click', function(e) {
+                    if (e.target && e.target.classList.contains('delete-image-btn')) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        deleteImage(e.target);
+                    }
+                });
+            }
+        }
+
+        function clearModal() {
+            document.getElementById('imageFile').value = '';
+            document.getElementById('imagePreview').style.display = 'none';
+        }
+
+        function saveImage() {
+            const imageFile = document.getElementById('imageFile').files[0];
+
+            if (!imageFile) {
+                alert('Please select an image file');
                 return;
             }
 
             const formData = new FormData();
             formData.append('productId', productId);
-            formData.append('imageUrl', imageUrl);
+            formData.append('imageFile', imageFile);
+
+            // Disable button to prevent duplicate submissions
+            const saveBtn = document.getElementById('saveImageBtn');
+            saveBtn.disabled = true;
+            const originalText = saveBtn.textContent;
+            saveBtn.textContent = 'Uploading...';
 
             fetch('/Manage/Product/AddImage', {
                 method: 'POST',
@@ -102,80 +171,107 @@
             })
             .then(response => response.json())
             .then(data => {
-                // Add new image card to gallery
-                const gallery = document.getElementById('imageGallery');
-                if (!gallery.querySelector('.image-card')) {
-                    gallery.innerHTML = '';
-                }
+                saveBtn.disabled = false;
+                saveBtn.textContent = originalText;
 
-                const imageCard = document.createElement('div');
-                imageCard.className = 'col-md-3 mb-4 image-card';
-                imageCard.setAttribute('data-image-id', data.id);
-                imageCard.innerHTML = `
-                    <div class="card">
-                        <img src="/assets/img/product/${data.imageUrl}" alt="Product Image" class="card-img-top" style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <p class="card-text small">${data.imageUrl}</p>
-                            <button type="button" class="btn btn-danger btn-sm delete-image-btn" data-image-id="${data.id}">Delete</button>
-                        </div>
-                    </div>
-                `;
-                gallery.appendChild(imageCard);
-
-                // Close modal
-                const modal = bootstrap.Modal.getInstance(document.getElementById('addImageModal'));
-                modal.hide();
-
-                // Re-attach delete event listeners
-                attachDeleteListeners();
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Error adding image');
-            });
-        });
-
-        // Delete Image Function
-        function attachDeleteListeners() {
-            document.querySelectorAll('.delete-image-btn').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    e.preventDefault();
-
-                    if (!confirm('Are you sure you want to delete this image?')) {
+                if (data.success) {
+                    // Add new image card to gallery
+                    const gallery = document.getElementById('imageGallery');
+                    if (!gallery) {
+                        location.reload();
                         return;
                     }
 
-                    const imageId = this.getAttribute('data-image-id');
-
-                    const formData = new FormData();
-                    formData.append('imageId', imageId);
-
-                    fetch('/Manage/Product/DeleteImage', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            // Remove the image card
-                            const card = document.querySelector(`[data-image-id="${imageId}"]`);
-                            card.remove();
-
-                            // Show empty message if no images left
-                            const gallery = document.getElementById('imageGallery');
-                            if (gallery.children.length === 0) {
-                                gallery.innerHTML = '<div class="alert alert-info">No images found. Click "Add Image" to upload product images.</div>';
-                            }
+                    // Remove "No images" message if it exists
+                    const cardBody = gallery.closest('.card-body');
+                    if (cardBody) {
+                        const noImagesAlert = cardBody.querySelector('.alert-info');
+                        if (noImagesAlert) {
+                            noImagesAlert.remove();
                         }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Error deleting image');
-                    });
-                });
+                    }
+
+                    const imageCard = document.createElement('div');
+                    imageCard.className = 'col-md-3 mb-4 image-card';
+                    imageCard.setAttribute('data-image-id', data.id);
+                    imageCard.innerHTML = `
+                        <div class="card">
+                            <img src="/assets/img/product/${data.imageUrl}" alt="Product Image" class="card-img-top" style="height: 200px; object-fit: cover;">
+                            <div class="card-body">
+                                <p class="card-text small">${data.imageUrl}</p>
+                                <button type="button" class="btn btn-danger btn-sm delete-image-btn" data-image-id="${data.id}">Delete</button>
+                            </div>
+                        </div>
+                    `;
+                    gallery.appendChild(imageCard);
+
+                    // Close modal properly
+                    if (addImageModal) {
+                        addImageModal.hide();
+                    }
+                } else {
+                    alert(data.message || 'Error adding image');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error adding image: ' + error.message);
+                saveBtn.disabled = false;
+                saveBtn.textContent = originalText;
             });
         }
 
-        // Attach delete listeners on page load
-        attachDeleteListeners();
+        function deleteImage(button) {
+            if (!confirm('Are you sure you want to delete this image?')) {
+                return;
+            }
+
+            const imageId = button.getAttribute('data-image-id');
+            const imageCard = document.querySelector(`[data-image-id="${imageId}"]`);
+
+            if (!imageCard) {
+                alert('Image card not found');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('imageId', imageId);
+
+            // Disable button to prevent duplicate submissions
+            button.disabled = true;
+            const originalText = button.textContent;
+            button.textContent = 'Deleting...';
+
+            fetch('/Manage/Product/DeleteImage', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Remove the image card with animation
+                    imageCard.style.opacity = '0';
+                    imageCard.style.transition = 'opacity 0.3s ease';
+                    setTimeout(() => {
+                        imageCard.remove();
+
+                        // Show empty message if no images left
+                        const gallery = document.getElementById('imageGallery');
+                        if (gallery && gallery.children.length === 0) {
+                            gallery.innerHTML = '<div class="alert alert-info">No images found. Click "Add Image" to upload product images.</div>';
+                        }
+                    }, 300);
+                } else {
+                    button.disabled = false;
+                    button.textContent = originalText;
+                    alert('Error deleting image');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error deleting image: ' + error.message);
+                button.disabled = false;
+                button.textContent = originalText;
+            });
+        }
     </script>
 }

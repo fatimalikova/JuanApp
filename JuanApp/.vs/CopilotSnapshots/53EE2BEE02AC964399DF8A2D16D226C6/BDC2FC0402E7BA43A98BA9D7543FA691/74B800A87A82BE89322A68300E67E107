@@ -1,0 +1,131 @@
+﻿using JuanApp.Models;
+using JuanApp.ViewModels;
+using JuanApp.ViewModels.UserVm;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
+namespace JuanApp.Controllers
+{
+    public class AccountController
+        (
+        UserManager<AppUser> userManager,
+        SignInManager<AppUser> signInManager,
+        RoleManager<IdentityRole> roleManager
+        ) : Controller
+    {
+        public IActionResult Index()
+        {
+            return View();
+        }
+
+        //public async Task<IActionResult> CreateRole()
+        //{
+        //  await roleManager.CreateAsync(new IdentityRole("Admin"));
+        //  await roleManager.CreateAsync(new IdentityRole("User"));
+        //  await roleManager.CreateAsync(new IdentityRole("SuperAdmin"));
+        //  return Content("Role created");
+        //}
+
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterVm model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await userManager.FindByNameAsync(model.UserName);
+            if (user != null)
+            {
+                ModelState.AddModelError("", "This username already taken");
+                return View(model);
+            }
+            user = new AppUser
+            {
+                FullName = model.FullName,
+                UserName = model.UserName,
+                Email = model.Email
+            };
+
+            var result = await userManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(model);
+
+            }
+            await userManager.AddToRoleAsync(user, "User");
+            //await signInManager.SignInAsync(user, isPersistent: false);
+            return RedirectToAction("Index", "Home");
+        }
+
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginVm model)
+        {
+
+            if(!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            var user = await userManager.FindByNameAsync(model.UserNameOrEmail) ?? await userManager.FindByEmailAsync(model.UserNameOrEmail);
+            if(user == null)
+            {
+                ModelState.AddModelError("", "Username or password is wrong");
+                return View(model);
+            }
+
+            // Check if user is already locked out before attempting sign in
+            if (await userManager.IsLockedOutAsync(user))
+            {
+                ModelState.AddModelError("", "Your account is locked out for 15 minutes due to multiple failed login attempts. Please try again later.");
+                return View(model);
+            }
+
+            var result = await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, true); //true => lockout if fail more than 3 times
+
+            if(result.IsLockedOut)
+            {
+                ModelState.AddModelError("", "Your account is locked out for 15 minutes due to multiple failed login attempts. Please try again later.");
+                return View(model);
+            }
+
+            if (!result.Succeeded)
+            {
+                var failedAttempts = await userManager.GetAccessFailedCountAsync(user);
+                var remainingAttempts = 3 - failedAttempts;
+
+                if (remainingAttempts > 0)
+                {
+                    ModelState.AddModelError("", $"Invalid credentials. You have {remainingAttempts} attempt(s) remaining before your account is locked.");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Your account has been locked due to multiple failed login attempts. Please try again after 15 minutes.");
+                }
+                return View(model);
+            }
+            return RedirectToAction("Index", "Home");
+
+        }
+    }
+}

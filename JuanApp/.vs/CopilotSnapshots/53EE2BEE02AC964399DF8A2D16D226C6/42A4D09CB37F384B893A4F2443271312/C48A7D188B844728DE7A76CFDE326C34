@@ -1,0 +1,87 @@
+﻿@model JuanApp.Models.Product
+
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Edit Product</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-area="Manage" asp-controller="Product" asp-action="Edit" asp-route-id="@Model.Id" method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label">Product Name</label>
+                            <input asp-for="Name" class="form-control" required />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="MainImageUrl" class="form-label">Main Image URL</label>
+                            <input asp-for="MainImageUrl" class="form-control" />
+                            @if (!string.IsNullOrEmpty(Model.MainImageUrl))
+                            {
+                                <div class="mt-2">
+                                    <img src="~/assets/img/products/@Model.MainImageUrl" alt="Current Image" style="max-width: 150px; height: auto;" />
+                                </div>
+                            }
+                            <span asp-validation-for="MainImageUrl" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Price" class="form-label">Price</label>
+                                    <input asp-for="Price" class="form-control" step="0.01" type="number" required />
+                                    <span asp-validation-for="Price" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="DiscountPercentage" class="form-label">Discount %</label>
+                                    <input asp-for="DiscountPercentage" class="form-control" type="number" />
+                                    <span asp-validation-for="DiscountPercentage" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="InStock" class="form-check-input" type="checkbox" id="inStock" />
+                                        <label for="inStock" class="form-check-label"><strong>In Stock</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input asp-for="IsNew" class="form-check-input" type="checkbox" id="isNew" />
+                                        <label for="isNew" class="form-check-label"><strong>New Product</strong></label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary">Update Product</button>
+                            <a asp-area="Manage" asp-controller="Product" asp-action="Index" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 ﻿using JuanApp.Models;
-using JuanApp.ViewModels;
 using JuanApp.ViewModels.UserVm;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -93,14 +93,110 @@ namespace JuanApp.Controllers
                 ModelState.AddModelError("", "Username or password is wrong");
                 return View(model);
             }
-            var result = await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe,true); //true => lockout if fail more than 5 times (block user for 5 minutes)
+            if(await userManager.IsInRoleAsync(user, "Admin"))
+            {
+                ModelState.AddModelError("", "Admins cannot login from this page");
+                return View(model);
+            }
+            if (await userManager.IsLockedOutAsync(user))
+            {
+                ModelState.AddModelError("", "Your account is locked out for 15 minutes due to multiple failed login attempts. Please try again later.");
+                return View(model);
+            }
+
+            var result = await signInManager.PasswordSignInAsync(user, model.Password, model.RememberMe, true); //true => lockout if fail more than 3 times
+
+            if(result.IsLockedOut)
+            {
+                ModelState.AddModelError("", "Your account is locked out for 15 minutes due to multiple failed login attempts. Please try again later.");
+                return View(model);
+            }
+
             if (!result.Succeeded)
             {
-                ModelState.AddModelError("", "Username or password is wrong");
+                var failedAttempts = await userManager.GetAccessFailedCountAsync(user);
+                var remainingAttempts = 3 - failedAttempts;
+
+                if (remainingAttempts > 0)
+                {
+                    ModelState.AddModelError("", $"Invalid credentials. You have {remainingAttempts} attempt(s) remaining before your account is locked.");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Your account has been locked due to multiple failed login attempts. Please try again after 15 minutes.");
+                }
                 return View(model);
             }
             return RedirectToAction("Index", "Home");
 
+        }
+
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> UserProfile(string tab="dashboard")
+        {
+            ViewBag.Tab = tab;
+            var user = await userManager.GetUserAsync(User);
+            UserProfileVm userProfile = new UserProfileVm
+            {
+                UserInfo = new UserProfileInfoVm
+                {
+                    FullName = user.FullName,
+                    UserName = user.UserName,
+                    Email = user.Email
+                }
+            };
+            return View(userProfile);
+        }
+
+        [Authorize(Roles = "User")]
+        [HttpPost]
+        public async Task<IActionResult> UserProfile(UserProfileVm model)
+        {
+            ViewBag.Tab = "profile";
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await userManager.GetUserAsync(User);
+
+            await userManager.SetUserNameAsync(user, model.UserInfo.UserName);
+            await userManager.SetEmailAsync(user, model.UserInfo.Email);
+
+            user.FullName = model.UserInfo.FullName;
+
+            var result = await userManager.UpdateAsync(user);
+
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(model);
+            }
+
+            if (!string.IsNullOrEmpty(model.UserInfo.NewPassword))
+            {
+                var changePasswordResult = await userManager.ChangePasswordAsync(
+                    user,
+                    model.UserInfo.CurrentPassword,
+                    model.UserInfo.NewPassword
+                );
+
+                if (!changePasswordResult.Succeeded)
+                {
+                    foreach (var error in changePasswordResult.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                    return View(model);
+                }
+            }
+
+            await signInManager.RefreshSignInAsync(user); 
+
+            return RedirectToAction("UserProfile");
         }
     }
 }

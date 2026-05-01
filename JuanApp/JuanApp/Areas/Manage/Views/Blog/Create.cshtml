@@ -12,7 +12,7 @@
                     <h4 class="card-title">Create New Blog</h4>
                 </div>
                 <div class="card-body">
-                    <form asp-area="Manage" asp-controller="Blog" asp-action="Create" method="post">
+                    <form asp-area="Manage" asp-controller="Blog" asp-action="Create" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label asp-for="Title" class="form-label">Title</label>
                             <input asp-for="Title" class="form-control" placeholder="Enter blog title" required />
@@ -26,8 +26,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label asp-for="MainImageUrl" class="form-label">Main Image URL</label>
-                            <input asp-for="MainImageUrl" class="form-control" placeholder="e.g., image.jpg" />
+                            <label for="mainImageFile" class="form-label">Main Image</label>
+                            <input type="file" id="mainImageFile" name="mainImageFile" class="form-control" accept="image/*" />
+                            <small class="text-muted">PNG, JPG, GIF up to 2MB</small>
                             <span asp-validation-for="MainImageUrl" class="text-danger"></span>
                         </div>
 
