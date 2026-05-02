@@ -21,6 +21,32 @@ namespace JuanApp.Data.Configurations
             builder.Property(p => p.InStock)
                 .IsRequired();
 
+
+            //seed data
+            builder.HasData(
+                new Product
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Product 1",
+                    Description = "Description for Product 1",
+                    DiscountPercentage = 10,
+                    Price = 100,
+                    MainImageUrl = "https://via.placeholder.com/150",
+                    InStock = true,
+                    IsNew = true
+                },
+                new Product
+                {
+                    Id = Guid.NewGuid(),
+                    Name = "Product 2",
+                    Description = "Description for Product 2",
+                    DiscountPercentage = 20,
+                    Price = 200,
+                    MainImageUrl = "https://via.placeholder.com/150",
+                    InStock = false,
+                    IsNew = false
+                }
+            );
         }
     }
 }

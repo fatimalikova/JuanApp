@@ -222,15 +222,57 @@
                     </div>
                         <!-- product item list end -->
                         <!-- start pagination area -->
-                        <div class="paginatoin-area text-center mt-45">
+                    <!-- start pagination area -->
+
+
+                    @* <div class="paginatoin-area text-center mt-45">
+                        @if (Model.TotalPages > 1)
+                        {
                             <ul class="pagination-box">
-                                <li><a class="Previous" href="#"><i class="ion-ios-arrow-left"></i></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a class="Next" href="#"><i class="ion-ios-arrow-right"></i></a></li>
+                                {{!-- Previous Button --}}
+                                <li class="@(Model.CurrentPage == 1 ? "disabled" : "")">
+                                    <a class="Previous"
+                                       asp-controller="Shop"
+                                       asp-action="Index"
+                                       asp-route-page="@(Model.CurrentPage - 1)"
+                                       asp-route-colorId="@Model.ColorId">
+                                        <i class="ion-ios-arrow-left"></i>
+                                    </a>
+                                </li>
+
+                                {{!-- Page Numbers --}}
+                                @for (int i = 1; i <= Model.TotalPages; i++)
+                                {
+                                    <li class="@(i == Model.CurrentPage ? "active" : "")">
+                                        <a asp-controller="Shop"
+                                           asp-action="Index"
+                                           asp-route-page="@i"
+                                           asp-route-colorId="@Model.ColorId">
+                                            @i
+                                        </a>
+                                    </li>
+                                }
+
+                                {{!-- Next Button --}}
+                                <li class="@(Model.CurrentPage == Model.TotalPages ? "disabled" : "")">
+                                    <a class="Next"
+                                       asp-controller="Shop"
+                                       asp-action="Index"
+                                       asp-route-page="@(Model.CurrentPage + 1)"
+                                       asp-route-colorId="@Model.ColorId">
+                                        <i class="ion-ios-arrow-right"></i>
+                                    </a>
+                                </li>
                             </ul>
-                        </div>
+
+                            <p class="mt-2 text-muted">
+                                Showing @((Model.CurrentPage - 1) * Model.PageSize + 1)–@(Math.Min(Model.CurrentPage * Model.PageSize, Model.TotalProducts)) of @Model.TotalProducts results
+                            </p>
+                        }
+                    </div> *@
+
+
+                    <!-- end pagination area -->
                         <!-- end pagination area -->
                     </div>
                 </div>

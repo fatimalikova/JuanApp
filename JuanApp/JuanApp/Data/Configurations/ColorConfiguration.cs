@@ -10,7 +10,7 @@ namespace JuanApp.Data.Configurations
         {
             builder.Property(x => x.Name).IsRequired();
         }
+        //u must create relation between product and color because of many to many relation
 
-        
     }
 }

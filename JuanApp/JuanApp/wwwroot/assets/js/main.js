@@ -100,14 +100,14 @@
     });
 
 
-    $(.addbasket).on("click", function (e) {
-        e.preventDefault();
-        // Handle add to cart functionality
-        let url = $(this).data("url");
-        fetch(url)
-            .then((response) => response.json())
-            .then((data) => {
-                $(".minicart-item-wrapper").append(html);
-            })
-    });
+    //$(.addbasket).on("click", function (e) {
+    //    e.preventDefault();
+    //    // Handle add to cart functionality
+    //    let url = $(this).data("url");
+    //    fetch(url)
+    //        .then((response) => response.json())
+    //        .then((data) => {
+    //            $(".minicart-item-wrapper").append(html);
+    //        })
+    //});
 });

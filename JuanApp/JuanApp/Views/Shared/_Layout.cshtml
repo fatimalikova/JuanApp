@@ -4,7 +4,7 @@
 @inject LayoutService layoutService
 @{
     var settings = layoutService.GetSettings();
-    var basketItems = layoutService.GetBasketItems();
+    //var basketItems = layoutService.GetBasketItems();
 }
 
 <!DOCTYPE html>
@@ -308,7 +308,7 @@
                                         <li>
                                             <a href="#" class="minicart-btn">
                                                 <i class="ion-bag"></i>
-                                                <div class="notification">@basketItems.Count</div>
+                                                @* <div class="notification">@basketItems.Count</div> *@
                                             </a>
                                         </li>
                                     </ul>

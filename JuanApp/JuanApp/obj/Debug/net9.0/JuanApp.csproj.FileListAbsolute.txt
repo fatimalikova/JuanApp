@@ -849,8 +849,8 @@ C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\dqdb949lox-{0}-xx02ztqvw3-xx02ztqvw3.gz
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
-C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\8lv86l1kyj-{0}-soemv10jwa-soemv10jwa.gz
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\bin\Debug\net9.0\WebDriver.dll
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\bin\Debug\net9.0\runtimes\linux\native\selenium-manager
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\bin\Debug\net9.0\runtimes\osx\native\selenium-manager
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\bin\Debug\net9.0\runtimes\win\native\selenium-manager.exe
+C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\obj\Debug\net9.0\compressed\8lv86l1kyj-{0}-c3zz7li6wt-c3zz7li6wt.gz

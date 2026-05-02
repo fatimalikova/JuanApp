@@ -724,6 +724,7 @@ wwwroot\manage\vendors\typeahead.js\typeahead.bundle.min.js
 wwwroot\assets\img\products\f7496058-ce31-4ab1-9a88-08a344a0393c.jpg
 wwwroot\assets\img\product\e9b59b47-d905-4709-933c-badf03dae3bf.jpg
 wwwroot\assets\img\product\595210cc-82b6-48e5-b0aa-e1b1f86048b9.jpg
+wwwroot\assets\img\slider\d4bea28c-eec3-4e24-be6d-8379ed3c458d.jpg
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\wwwroot\favicon.ico
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\wwwroot\assets\js\vendor.js
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\wwwroot\assets\js\plugins.js
