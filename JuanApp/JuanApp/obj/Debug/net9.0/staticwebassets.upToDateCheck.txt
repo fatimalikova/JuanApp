@@ -51,9 +51,6 @@ wwwroot\assets\img\icon\policy-2.png
 wwwroot\assets\img\icon\policy-3.png
 wwwroot\assets\img\logo\logo.png
 wwwroot\assets\img\paypal-card.jpg
-wwwroot\assets\img\products\f7496058-ce31-4ab1-9a88-08a344a0393c.jpg
-wwwroot\assets\img\product\595210cc-82b6-48e5-b0aa-e1b1f86048b9.jpg
-wwwroot\assets\img\product\e9b59b47-d905-4709-933c-badf03dae3bf.jpg
 wwwroot\assets\img\product\pro-small-1.jpg
 wwwroot\assets\img\product\pro-small-2.jpg
 wwwroot\assets\img\product\pro-small-3.jpg
@@ -80,11 +77,11 @@ wwwroot\assets\img\testimonial\tm-1.jpg
 wwwroot\assets\img\testimonial\tm-2.jpg
 wwwroot\assets\img\testimonial\tm-3.jpg
 wwwroot\assets\js\active.js
-wwwroot\assets\js\main.js
 wwwroot\assets\js\modernizr-2.8.3.min.js
 wwwroot\assets\js\plugins.js
 wwwroot\assets\js\vendor.js
 wwwroot\favicon.ico
+wwwroot\assets\js\main.js
 wwwroot\manage\css\maps\style.css.map
 wwwroot\manage\css\style.css
 wwwroot\manage\docs\documentation.html
@@ -724,6 +721,9 @@ wwwroot\manage\vendors\select2-bootstrap-theme\select2-bootstrap.min.css
 wwwroot\manage\vendors\select2\select2.min.css
 wwwroot\manage\vendors\select2\select2.min.js
 wwwroot\manage\vendors\typeahead.js\typeahead.bundle.min.js
+wwwroot\assets\img\products\f7496058-ce31-4ab1-9a88-08a344a0393c.jpg
+wwwroot\assets\img\product\e9b59b47-d905-4709-933c-badf03dae3bf.jpg
+wwwroot\assets\img\product\595210cc-82b6-48e5-b0aa-e1b1f86048b9.jpg
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\wwwroot\favicon.ico
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\wwwroot\assets\js\vendor.js
 C:\Users\fmeli\OneDrive\Desktop\BackendMiniApp\JuanApp\JuanApp\wwwroot\assets\js\plugins.js

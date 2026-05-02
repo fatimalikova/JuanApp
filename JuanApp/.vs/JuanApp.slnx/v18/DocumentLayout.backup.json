@@ -3,24 +3,107 @@
   "WorkspaceRootPath": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\account\\userprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\account\\userprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\models\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\models\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\models\\basketitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\models\\basketitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\viewmodels\\uservm\\userprofilevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\viewmodels\\uservm\\userprofilevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\viewmodels\\uservm\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\viewmodels\\uservm\\registervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\viewmodels\\uservm\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\viewmodels\\uservm\\loginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\account\\userprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\account\\userprofile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\products\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\products\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\controllers\\shopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\controllers\\shopcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\shop\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\shop\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\controllers\\basketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\controllers\\basketcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\blog\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\blog\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\shared\\_basketpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\shared\\_basketpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\views\\shared\\_productmodalpartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\views\\shared\\_productmodalpartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\viewmodels\\uservm\\userprofilevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\viewmodels\\uservm\\userprofilevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\services\\basketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\services\\basketservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\viewmodels\\basketitemvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\viewmodels\\basketitemvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\juanapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\juanapp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\services\\layoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\services\\layoutservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\wwwroot\\assets\\js\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\wwwroot\\assets\\js\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\data\\juandbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\data\\juandbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\areas\\manage\\views\\product\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -47,10 +130,6 @@
       "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\areas\\manage\\viewmodels\\adminloginvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\areas\\manage\\views\\blog\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\areas\\manage\\views\\blog\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -61,10 +140,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\areas\\manage\\views\\slider\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\areas\\manage\\views\\slider\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|c:\\users\\fmeli\\onedrive\\desktop\\backendminiapp\\juanapp\\juanapp\\models\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{288DFF15-216D-9393-91B9-476BC66D4475}|JuanApp\\JuanApp.csproj|solutionrelative:juanapp\\models\\blog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,17 +149,17 @@
       "DocumentGroups": [
         {
           "DockedHeight": 311,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "JuanApp\\Controllers\\AccountController.cs",
               "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Controllers\\AccountController.cs",
               "RelativeToolTip": "JuanApp\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAcwJoAAAAkAAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAAwIwAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-29T20:47:15.208Z",
               "IsPinned": true,
@@ -92,13 +167,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "UserProfile.cshtml",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Account\\UserProfile.cshtml",
               "RelativeDocumentMoniker": "JuanApp\\Views\\Account\\UserProfile.cshtml",
-              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Account\\UserProfile.cshtml*",
-              "RelativeToolTip": "JuanApp\\Views\\Account\\UserProfile.cshtml*",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAAAJMAAABqAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Account\\UserProfile.cshtml",
+              "RelativeToolTip": "JuanApp\\Views\\Account\\UserProfile.cshtml",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAHcAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-05-01T17:11:20.713Z",
               "IsPinned": true,
@@ -106,7 +181,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "UserProfileVm.cs",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\ViewModels\\UserVm\\UserProfileVm.cs",
               "RelativeDocumentMoniker": "JuanApp\\ViewModels\\UserVm\\UserProfileVm.cs",
@@ -115,6 +190,34 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAawA0AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-01T17:24:47.621Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "JuanApp\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "JuanApp\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABEBAAAAAAAAAAAAAJwAAACAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-01T21:15:25.558Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Products\\Detail.cshtml",
+              "RelativeDocumentMoniker": "JuanApp\\Views\\Products\\Detail.cshtml",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Products\\Detail.cshtml",
+              "RelativeToolTip": "JuanApp\\Views\\Products\\Detail.cshtml",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAmwJsAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-01T23:13:47.712Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
@@ -140,7 +243,59 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Blog.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Models\\Blog.cs",
+              "RelativeDocumentMoniker": "JuanApp\\Models\\Blog.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Models\\Blog.cs",
+              "RelativeToolTip": "JuanApp\\Models\\Blog.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T16:03:13.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Models\\AppUser.cs",
+              "RelativeDocumentMoniker": "JuanApp\\Models\\AppUser.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Models\\AppUser.cs*",
+              "RelativeToolTip": "JuanApp\\Models\\AppUser.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T22:03:21.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "BasketItem.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Models\\BasketItem.cs",
+              "RelativeDocumentMoniker": "JuanApp\\Models\\BasketItem.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Models\\BasketItem.cs",
+              "RelativeToolTip": "JuanApp\\Models\\BasketItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T20:36:00.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RegisterVm.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\ViewModels\\UserVm\\RegisterVm.cs",
+              "RelativeDocumentMoniker": "JuanApp\\ViewModels\\UserVm\\RegisterVm.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\ViewModels\\UserVm\\RegisterVm.cs",
+              "RelativeToolTip": "JuanApp\\ViewModels\\UserVm\\RegisterVm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T00:55:56.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "JuanApp\\Views\\Account\\Login.cshtml",
@@ -153,7 +308,85 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
+              "Title": "LoginVm.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\ViewModels\\UserVm\\LoginVm.cs",
+              "RelativeDocumentMoniker": "JuanApp\\ViewModels\\UserVm\\LoginVm.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\ViewModels\\UserVm\\LoginVm.cs",
+              "RelativeToolTip": "JuanApp\\ViewModels\\UserVm\\LoginVm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T00:01:18.716Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ShopController.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Controllers\\ShopController.cs",
+              "RelativeDocumentMoniker": "JuanApp\\Controllers\\ShopController.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Controllers\\ShopController.cs",
+              "RelativeToolTip": "JuanApp\\Controllers\\ShopController.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-02T00:43:12.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Shop\\Index.cshtml",
+              "RelativeDocumentMoniker": "JuanApp\\Views\\Shop\\Index.cshtml",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Shop\\Index.cshtml",
+              "RelativeToolTip": "JuanApp\\Views\\Shop\\Index.cshtml",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAAAKYAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-02T00:30:51.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "BasketController.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Controllers\\BasketController.cs",
+              "RelativeDocumentMoniker": "JuanApp\\Controllers\\BasketController.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Controllers\\BasketController.cs",
+              "RelativeToolTip": "JuanApp\\Controllers\\BasketController.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAQwDQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T21:27:06.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Blog\\Detail.cshtml",
+              "RelativeDocumentMoniker": "JuanApp\\Views\\Blog\\Detail.cshtml",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Blog\\Detail.cshtml",
+              "RelativeToolTip": "JuanApp\\Views\\Blog\\Detail.cshtml",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-02T00:27:50.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "_BasketPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Shared\\_BasketPartial.cshtml",
+              "RelativeDocumentMoniker": "JuanApp\\Views\\Shared\\_BasketPartial.cshtml",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Shared\\_BasketPartial.cshtml",
+              "RelativeToolTip": "JuanApp\\Views\\Shared\\_BasketPartial.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-05-01T21:29:27.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
               "Title": "_ProductModalPartialView.cshtml",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Views\\Shared\\_ProductModalPartialView.cshtml",
               "RelativeDocumentMoniker": "JuanApp\\Views\\Shared\\_ProductModalPartialView.cshtml",
@@ -166,7 +399,115 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
+              "Title": "Microsoft.Common.CurrentVersion.targets",
+              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\18\\Insiders\\MSBuild\\Current\\Bin\\amd64\\Microsoft.Common.CurrentVersion.targets",
+              "ViewState": "AgIAAAYVAAAAAAAAAAAAwBQVAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-05-01T23:53:53.706Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "BasketService.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Services\\BasketService.cs",
+              "RelativeDocumentMoniker": "JuanApp\\Services\\BasketService.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Services\\BasketService.cs",
+              "RelativeToolTip": "JuanApp\\Services\\BasketService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T23:46:14.738Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "BasketItemVm.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\ViewModels\\BasketItemVm.cs",
+              "RelativeDocumentMoniker": "JuanApp\\ViewModels\\BasketItemVm.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\ViewModels\\BasketItemVm.cs",
+              "RelativeToolTip": "JuanApp\\ViewModels\\BasketItemVm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T20:39:27.605Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "JuanApp\\Models\\Product.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Models\\Product.cs",
+              "RelativeToolTip": "JuanApp\\Models\\Product.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T23:15:17.904Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "JuanApp.csproj",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\JuanApp.csproj",
+              "RelativeDocumentMoniker": "JuanApp\\JuanApp.csproj",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\JuanApp.csproj",
+              "RelativeToolTip": "JuanApp\\JuanApp.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-05-01T23:45:58.93Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "LayoutService.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Services\\LayoutService.cs",
+              "RelativeDocumentMoniker": "JuanApp\\Services\\LayoutService.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Services\\LayoutService.cs",
+              "RelativeToolTip": "JuanApp\\Services\\LayoutService.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAYwE0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T22:35:54.231Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Program.cs",
+              "RelativeDocumentMoniker": "JuanApp\\Program.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Program.cs",
+              "RelativeToolTip": "JuanApp\\Program.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAowCQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-30T20:01:56.183Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "main.js",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\wwwroot\\assets\\js\\main.js",
+              "RelativeDocumentMoniker": "JuanApp\\wwwroot\\assets\\js\\main.js",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\wwwroot\\assets\\js\\main.js",
+              "RelativeToolTip": "JuanApp\\wwwroot\\assets\\js\\main.js",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAqwG0AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2026-05-01T22:23:41.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "JuanDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Data\\JuanDbContext.cs",
+              "RelativeDocumentMoniker": "JuanApp\\Data\\JuanDbContext.cs",
+              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Data\\JuanDbContext.cs",
+              "RelativeToolTip": "JuanApp\\Data\\JuanDbContext.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-01T20:43:29.817Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\Views\\Slider\\Create.cshtml",
               "RelativeDocumentMoniker": "JuanApp\\Areas\\Manage\\Views\\Slider\\Create.cshtml",
@@ -178,19 +519,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "Blog.cs",
-              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Models\\Blog.cs",
-              "RelativeDocumentMoniker": "JuanApp\\Models\\Blog.cs",
-              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Models\\Blog.cs",
-              "RelativeToolTip": "JuanApp\\Models\\Blog.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-01T16:03:13.229Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 26,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\Views\\Product\\Create.cshtml",
               "RelativeDocumentMoniker": "JuanApp\\Areas\\Manage\\Views\\Product\\Create.cshtml",
@@ -202,7 +531,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 32,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\Views\\Blog\\Edit.cshtml",
               "RelativeDocumentMoniker": "JuanApp\\Areas\\Manage\\Views\\Blog\\Edit.cshtml",
@@ -214,7 +543,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 29,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\Views\\Slider\\Index.cshtml",
               "RelativeDocumentMoniker": "JuanApp\\Areas\\Manage\\Views\\Slider\\Index.cshtml",
@@ -226,7 +555,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 28,
               "Title": "BlogController.cs",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\Controllers\\BlogController.cs",
               "RelativeDocumentMoniker": "JuanApp\\Areas\\Manage\\Controllers\\BlogController.cs",
@@ -238,7 +567,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 27,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\Views\\Slider\\Edit.cshtml",
               "RelativeDocumentMoniker": "JuanApp\\Areas\\Manage\\Views\\Slider\\Edit.cshtml",
@@ -250,7 +579,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 33,
               "Title": "SliderController.cs",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\Controllers\\SliderController.cs",
               "RelativeDocumentMoniker": "JuanApp\\Areas\\Manage\\Controllers\\SliderController.cs",
@@ -262,7 +591,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 30,
               "Title": "Login.cshtml",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\Views\\AdminAccount\\Login.cshtml",
               "RelativeDocumentMoniker": "JuanApp\\Areas\\Manage\\Views\\AdminAccount\\Login.cshtml",
@@ -274,7 +603,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 31,
               "Title": "AdminLoginVm.cs",
               "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Areas\\Manage\\ViewModels\\AdminLoginVm.cs",
               "RelativeDocumentMoniker": "JuanApp\\Areas\\Manage\\ViewModels\\AdminLoginVm.cs",
@@ -283,18 +612,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-30T20:44:46.82Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Program.cs",
-              "RelativeDocumentMoniker": "JuanApp\\Program.cs",
-              "ToolTip": "C:\\Users\\fmeli\\OneDrive\\Desktop\\BackendMiniApp\\JuanApp\\JuanApp\\Program.cs",
-              "RelativeToolTip": "JuanApp\\Program.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAowDAAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-30T20:01:56.183Z"
             }
           ]
         }

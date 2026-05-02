@@ -30,18 +30,18 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-4">
                             <div class="myaccount-tab-menu nav" role="tablist">
-                                <a href="#dashboad" class="@(ViewBag.Tab == "dashboard" ? "active" : "") data-toggle="tab">
+                                <a href="#dashboad" data-toggle="tab">
                                     <i class="fa fa-dashboard"></i>
                                     Dashboard
                                 </a>
-                                <a href="#orders" class="@(ViewBag.Tab == "orders" ? "active" : "")" data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
-                                <a href="#download" class="@(ViewBag.Tab == "download" ? "active" : "")" data-toggle="tab"><i class="fa fa-cloud-download"></i> Download</a>
-                                <a href="#payment-method" class="@(ViewBag.Tab == "payment-method" ? "active" : "")" data-toggle="tab">
+                                <a href="#orders"  data-toggle="tab"><i class="fa fa-cart-arrow-down"></i> Orders</a>
+                                <a href="#download" data-toggle="tab"><i class="fa fa-cloud-download"></i> Download</a>
+                                <a href="#payment-method"  data-toggle="tab">
                                     <i class="fa fa-credit-card"></i> Payment
                                     Method
                                 </a>
-                                <a href="#address-edit" class="@(ViewBag.Tab == "address-edit" ? "active" : "")" data-toggle="tab"><i class="fa fa-map-marker"></i> address</a>
-                                <a href="#account-info" class="@(ViewBag.Tab == "account-info" ? "active" : "")" data-toggle="tab"><i class="fa fa-user"></i> Account Details</a>
+                                <a href="#address-edit"  data-toggle="tab"><i class="fa fa-map-marker"></i> address</a>
+                                <a href="#account-info"  data-toggle="tab"><i class="fa fa-user"></i> Account Details</a>
                                 <a href="login-register.html"><i class="fa fa-sign-out"></i> Logout</a>
                             </div>
                         </div>
@@ -50,18 +50,18 @@
                         <div class="col-lg-9 col-md-8">
                             <div class="tab-content" id="myaccountContent">
                                 <!-- Single Tab Content Start -->
-                                <div class="tab-pane fade show active" id="dashboad" role="tabpanel">
+                                <div class="tab-pane fade @(ViewBag.Tab == "dashboard" ? "show active" : "")" id="dashboad" role="tabpanel">
                                     <div class="myaccount-content">
                                         <h3>Dashboard</h3>
                                         <div class="welcome">
-                                            <p>Hello, <strong>@Model.UserInfo.FullName</strong> (If Not <strong>@Model.UserInfo.FullName</strong>)<a href="login-register.html" class="logout"> Logout</a>)</p>
+                                            <p>Hello, <strong>Alex Tuntuni</strong> (If Not <strong>Tuntuni !</strong><a href="login-register.html" class="logout"> Logout</a>)</p>
                                         </div>
                                         <p class="mb-0">From your account dashboard. you can easily check & view your recent orders, manage your shipping and billing addresses and edit your password and account details.</p>
                                     </div>
                                 </div>
                                 <!-- Single Tab Content End -->
                                 <!-- Single Tab Content Start -->
-                                <div class="tab-pane fade" id="orders" role="tabpanel">
+                                <div class="tab-pane fade @(ViewBag.Tab == "orders" ? "show active" : "")" id="orders" role="tabpanel">
                                     <div class="myaccount-content">
                                         <h3>Orders</h3>
                                         <div class="myaccount-table table-responsive text-center">
@@ -145,11 +145,11 @@
                                 </div>
                                 <!-- Single Tab Content End -->
                                 <!-- Single Tab Content Start -->
-                                <div class="tab-pane fade @(ViewBag.Tab == "address-edit" ? "active" : "")" id="address-edit" role="tabpanel">
+                                <div class="tab-pane fade" id="address-edit" role="tabpanel">
                                     <div class="myaccount-content">
                                         <h3>Billing Address</h3>
                                         <address>
-                                            <p><strong>@Model.UserInfo.FullName</strong></p>
+                                            <p><strong>Alex Tuntuni</strong></p>
                                             <p>
                                                 1355 Market St, Suite 900 <br>
                                                 San Francisco, CA 94103
@@ -161,7 +161,7 @@
                                 </div>
                                 <!-- Single Tab Content End -->
                                 <!-- Single Tab Content Start -->
-                                <div class="tab-pane fade @(ViewBag.Tab == "account-info" ? "active" : "")" id="account-info" role="tabpanel">
+                                <div class="tab-pane fade @(ViewBag.Tab == "profile" ? "show active" : "")" id="account-info" role="tabpanel">
                                     <div class="myaccount-content">
                                         <h3>Account Details</h3>
                                         <div class="account-details-form">

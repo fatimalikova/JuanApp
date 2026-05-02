@@ -1,7 +1,10 @@
 ﻿@using JuanApp.Services
+@using Microsoft.Build.Evaluation
+@using Microsoft.CodeAnalysis
 @inject LayoutService layoutService
 @{
     var settings = layoutService.GetSettings();
+    var basketItems = layoutService.GetBasketItems();
 }
 
 <!DOCTYPE html>
@@ -151,7 +154,7 @@
                                                     <li class="mega-title">
                                                         <a href="#">column 03</a>
                                                         <ul>
-                                                            <li><a href="cart.html">cart</a></li>
+                                                            <li><a asp-controller="basket" asp-action="addbasket" asp-route-id="" class="addbasket">cart</a></li>
                                                             <li><a href="checkout.html">checkout</a></li>
                                                             <li><a href="compare.html">compare</a></li>
                                                             <li><a href="wishlist.html">wishlist</a></li>
@@ -305,7 +308,7 @@
                                         <li>
                                             <a href="#" class="minicart-btn">
                                                 <i class="ion-bag"></i>
-                                                <div class="notification">2</div>
+                                                <div class="notification">@basketItems.Count</div>
                                             </a>
                                         </li>
                                     </ul>
@@ -421,7 +424,7 @@
                                     <li class="mega-title menu-item-has-children">
                                         <a href="#">column 03</a>
                                         <ul class="dropdown">
-                                            <li><a href="cart.html">cart</a></li>
+                                            <li><a asp-controller="basket" asp-action="addbasket" >cart</a></li>
                                             <li><a href="checkout.html">checkout</a></li>
                                             <li><a href="compare.html">compare</a></li>
                                             <li><a href="wishlist.html">wishlist</a></li>
@@ -553,10 +556,10 @@
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="myaccount">
                                     <a class="dropdown-item" href="my-account.html">my account</a>
-                                    <a class="dropdown-item" href="login-register.html">
+                                    <a class="dropdown-item" asp-controller="Login" asp-action="index">
                                         login
                                     </a>
-                                    <a class="dropdown-item" href="login-register.html">register</a>
+                                    <a class="dropdown-item" asp-controller="Register" asp-action="index">register</a>
                                 </div>
                             </div>
                         </li>
@@ -829,46 +832,7 @@
                 </div>
                 <div class="minicart-content-box">
                     <div class="minicart-item-wrapper">
-                        <ul>
-                            <li class="minicart-item">
-                                <div class="minicart-thumb">
-                                    <a href="product-details.html">
-                                        <img src="~/assets/img/cart/cart-1.jpg" alt="product" />
-                                    </a>
-                                </div>
-                                <div class="minicart-content">
-                                    <h3 class="product-name">
-                                        <a href="product-details.html">Flowers bouquet pink for all flower lovers</a>
-                                    </h3>
-                                    <p>
-                                        <span class="cart-quantity">1 <strong>&times;</strong></span>
-                                        <span class="cart-price">$100.00</span>
-                                    </p>
-                                </div>
-                                <button class="minicart-remove">
-                                    <i class="ion-android-close"></i>
-                                </button>
-                            </li>
-                            <li class="minicart-item">
-                                <div class="minicart-thumb">
-                                    <a href="product-details.html">
-                                        <img src="~/assets/img/cart/cart-2.jpg" alt="product" />
-                                    </a>
-                                </div>
-                                <div class="minicart-content">
-                                    <h3 class="product-name">
-                                        <a href="product-details.html">Jasmine flowers white for all flower lovers</a>
-                                    </h3>
-                                    <p>
-                                        <span class="cart-quantity">1 <strong>&times;</strong></span>
-                                        <span class="cart-price">$80.00</span>
-                                    </p>
-                                </div>
-                                <button class="minicart-remove">
-                                    <i class="ion-android-close"></i>
-                                </button>
-                            </li>
-                        </ul>
+                        @Html.Partial("_BasketPartial", new List<BasketItemVm>())
                     </div>
 
                     <div class="minicart-pricing-box">
@@ -916,6 +880,26 @@
     <!--=== Main Js ===-->
     <script src="~/assets/js/main.js"></script>
     @RenderSection("Scripts",required: false);
+
+    <script>
+        $(document).on("click", ".addbasket", function (e) {
+        e.preventDefault();
+        var url = $(this).attr("href");
+
+        $.ajax({
+        url: url,
+        type: "GET",
+        success: function (data) {
+        $(".minicart-item-wrapper").html(data);
+        // Mini cart-ı aç
+        $(".offcanvas-minicart-wrapper").addClass("open");
+        },
+        error: function () {
+        alert("Xəta baş verdi!");
+        }
+        });
+        });
+    </script>
 </body>
 
 <!-- Mirrored from demo.hasthemes.com/juan-preview-v1/juan/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Mar 2021 22:36:53 GMT -->

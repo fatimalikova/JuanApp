@@ -34,6 +34,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
     .AddErrorDescriber<CustomIdentityErrorDescriber>()
     .AddEntityFrameworkStores<JuanDbContext>();
 
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

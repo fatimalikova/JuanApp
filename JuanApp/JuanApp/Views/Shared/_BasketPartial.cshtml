@@ -1,0 +1,63 @@
+﻿@model List<JuanApp.ViewModels.BasketItemVm>
+@{
+    var items = Model;
+}
+@if (items.Count > 0)
+{
+    <ul>
+        @foreach (var item in items)
+        {
+            <li class="minicart-item">
+                <div class="minicart-thumb">
+                    <a href="/product/detail/@item.ProductId">
+                        <img src="~/assets/img/cart/@item.MainImageUrl" alt="product" />
+                    </a>
+                </div>
+                <div class="minicart-content">
+                    <h3 class="product-name">
+                        <a href="/product/detail/@item.ProductId">@item.Name</a>
+                    </h3>
+                    <p>
+                        <span class="cart-quantity">@item.Count <strong>&times;</strong></span>
+                        <span class="cart-price">$@item.Price</span>
+                    </p>
+                </div>
+                <button class="minicart-remove">
+                    <i class="ion-android-close"></i>
+                </button>
+            </li>
+        }
+        <li class="minicart-item">
+            <div class="minicart-thumb">
+                <a href="product-details.html">
+                    <img src="~/assets/img/cart/cart-2.jpg" alt="product" />
+                </a>
+            </div>
+            <div class="minicart-content">
+                <h3 class="product-name">
+                    <a href="product-details.html">Jasmine flowers white for all flower lovers</a>
+                </h3>
+                <p>
+                    <span class="cart-quantity">1 <strong>&times;</strong></span>
+                    <span class="cart-price">$80.00</span>
+                </p>
+            </div>
+            <button class="minicart-remove">
+                <i class="ion-android-close"></i>
+            </button>
+        </li>
+    </ul>
+
+@foreach (var item in Model)
+{
+    <div class="minicart-item d-flex mb-20">
+        <div class="minicart-thumb mr-20">
+            <img src="~/assets/img/product/@item.MainImageUrl" alt="@item.Name" />
+        </div>
+        <div class="minicart-content">
+            <h6>@item.Name</h6>
+            <span>@item.Count x $@item.Price</span>
+        </div>
+    </div>
+}
+}

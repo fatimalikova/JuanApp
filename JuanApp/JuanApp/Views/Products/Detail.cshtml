@@ -77,7 +77,12 @@
                                         <div class="quantity">
                                             <div class="pro-qty"><input type="text" value="1"></div>
                                         </div>
-                                        <a href="cart.html" class="btn btn-default">Add To Cart</a>
+                                    <a asp-controller="Basket"
+                                       asp-action="AddBasket"
+                                       asp-route-id="@(product.Id)"
+                                       class="btn btn-default addbasket">
+                                        Add To Cart
+                                    </a>
                                     </div>
                                     <div class="availability mb-20">
                                         <h5 class="cat-title">Availability:</h5>

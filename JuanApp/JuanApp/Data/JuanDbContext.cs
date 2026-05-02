@@ -12,7 +12,7 @@ namespace JuanApp.Data
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(JuanDbContext).Assembly);
             base.OnModelCreating(modelBuilder);
         }
-
+        public DbSet<BasketItem> BasketItems { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
